@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ETHICS-PFLAB-2</title>
+<style>
+:root{--bg:#f7f7f4;--panel:#fff;--ink:#1d2329;--muted:#5d6670;--line:#d7dbdf;--accent:#213b55;--soft:#eef3f7;--ok:#eaf5ec;--warn:#fff5df;--bad:#fdecec}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.48 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit} button,input,select,textarea{font:inherit} button{cursor:pointer}
+header{padding:20px 24px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+header h1{font-size:1.25rem;margin:0} header p{margin:.25rem 0 0;color:var(--muted)}
+.wrap{max-width:1250px;margin:0 auto;padding:22px;display:grid;grid-template-columns:290px 1fr;gap:20px}
+nav,.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+nav{position:sticky;top:106px;align-self:start} nav button{width:100%;text-align:left;margin:3px 0;padding:9px 10px;border:0;background:transparent;border-radius:8px} nav button.active{background:var(--soft);font-weight:700}
+.route{display:none} .route.active{display:block}
+h2{margin-top:0} h3{margin-bottom:.4rem} .muted{color:var(--muted)} .small{font-size:.9rem}
+.callout{padding:12px 14px;border-radius:9px;background:var(--soft);border:1px solid var(--line);margin:12px 0}
+.good{background:var(--ok)} .warn{background:var(--warn)} .bad{background:var(--bad)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px} .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.field{margin:12px 0} label{font-weight:650;display:block;margin-bottom:5px} textarea,input[type=text],select{width:100%;padding:10px;border:1px solid #bfc6cc;border-radius:8px;background:#fff} textarea{min-height:110px;resize:vertical}
+.btn{border:1px solid #aeb7bf;background:#fff;border-radius:8px;padding:9px 12px} .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)} .btn:disabled{opacity:.45;cursor:not-allowed}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.tool{border:1px solid var(--line);border-radius:10px;padding:12px;margin:10px 0} .tool.selected{border-width:2px;border-color:var(--accent)} .badge{display:inline-block;padding:2px 7px;border-radius:999px;background:var(--soft);font-size:.78rem}
+.seqitem{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid var(--line);border-radius:8px;margin:6px 0;background:#fff} .seqitem span{flex:1}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:12px 0;background:#fff} summary{font-weight:700;cursor:pointer}
+.dossier{max-height:70vh;overflow:auto;padding-right:8px} .dossier table{border-collapse:collapse;width:100%} .dossier th,.dossier td{border:1px solid var(--line);padding:7px;vertical-align:top} .dossier blockquote{margin:12px 0;padding:8px 14px;border-left:4px solid #b7c3ce;background:var(--soft)}
+.rubric td,.rubric th{border:1px solid var(--line);padding:8px;text-align:left} .rubric{border-collapse:collapse;width:100%}
+#selftest{white-space:pre-wrap;font:12px/1.3 ui-monospace,monospace}
+@media(max-width:850px){.wrap{grid-template-columns:1fr} nav{position:static} .grid2,.grid3{grid-template-columns:1fr} header{position:static}}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,.btn:focus-within{outline:3px solid #1f6feb;outline-offset:3px}
+.sr-note{font-size:.9rem;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><h1>Power &amp; Flourishing Laboratory</h1><p>ETHICS-PFLAB-2 · MAP → TRIAGE → SELECT → SEQUENCE → JUDGE → REPAIR → REOPEN</p></header>
+<div class="wrap">
+<nav aria-label="Lab navigation">
+<button data-route="handoff" class="active">1 · SUPER Handoff</button>
+<button data-route="dossier">2 · Case Dossier</button>
+<button data-route="map">3 · MAP + TRIAGE</button>
+<button data-route="select">4 · SELECT 3–5 Tools</button>
+<button data-route="sequence">5 · SEQUENCE</button>
+<button data-route="judge">6 · JUDGE</button>
+<button data-route="repair">7 · REPAIR</button>
+<button data-route="reopen">8 · REOPEN</button>
+<button data-route="record">9 · Lab Record</button>
+</nav>
+<main>
+<section class="route active" data-route="handoff">
+<div class="panel"><h2>Import your SUPER handoff</h2>
+<p>The Lab unlocks from the record you built across Chapters 1–12. Import the JSON exported from <strong>ETHICS-SUPER-FINAL-1 → PFLAB</strong>.</p>
+<div id="handoffStatus" class="callout warn" role="status" aria-live="polite"><strong>LAB LOCKED</strong><br>No validated SUPER handoff loaded.</div>
+<div class="actions"><label class="btn primary">Import SUPER handoff JSON<input id="handoffFile" type="file" accept="application/json" hidden></label><button class="btn" id="clearHandoff">Clear handoff</button></div>
+<div id="handoffReport" class="small"></div>
+<div class="callout"><strong>Authorial Return:</strong> the imported Tool Record is evidence of your prior work. It does not choose Tools, determine their order, attribute your values, or authorize your conclusion.</div>
+</div>
+<div class="panel"><h2>Power and Flourishing</h2><p><strong>Power</strong> asks who can shape conditions, options, representation, burden, contestability, authorization, and reopening. <strong>Flourishing</strong> asks what real forms of agency, learning, security, relationship, development, and opportunity affected people can actually exercise.</p><p><strong>They are organizing questions, not Tools 13 and 14.</strong></p><p class="sr-note"><strong>Ethics-first:</strong> this Lab uses later FSP safeguards under the hood—Map ≠ World ≠ Person; Generate ≠ Recommend ≠ Authorize; current judgment ≠ final closure—without requiring a separate FSP vocabulary lesson.</p></div>
+</section>
+
+<section class="route" data-route="dossier"><div class="panel"><h2>Case dossier and full Lab instructions</h2><div class="dossier"><h1>ETHICS-PFLAB-2</h1>
+<h2>Power and Flourishing Laboratory</h2>
+<h3>Student-Success-System Case, Multi-Tool Selection and Sequencing, Bounded Judgment, Repair Design, and REOPEN</h3>
+<p><strong>Status:</strong> FINAL INTEGRATED LAB / SUPER HANDOFF RECEIVER<br />
+<strong>Place in course:</strong> Culminating laboratory after Chapter 12<br />
+<strong>Case provenance:</strong> <strong>Fictional teaching case.</strong> The college, people, system, numbers, and events below are constructed for ethical inquiry. They are not reports about an actual institution.</p>
+<hr />
+<h1>The Challenge</h1>
+<p>Across twelve chapters, you built a Tool Rack.</p>
+<p>You learned to ask about attention, reasons, formation, contingency, rules, authority, motivation, respect, consequences, background power, fairness, care, and effective capability. The point was never to discover one Tool that replaces all the others.</p>
+<p>Real systems rarely present only one ethical problem at a time.</p>
+<p>A college policy can help some students and burden others. A prediction can be useful without being certain. An institution can have a legitimate purpose while using a questionable rule. A support program can increase welfare while treating a student as an object to be managed. A formally equal service can be much easier for some students to use than for others.</p>
+<p>This Lab receives the Tool Record you built across the historical chapters and asks you to do something different from the historical chapters.</p>
+<p>You will not learn a thirteenth theory.</p>
+<p>You will decide which of the Tools you already earned actually belong in one complicated problem, what order to use them in, how strongly your evidence supports a judgment, what repair would target the problem you found, and what would make you reconsider.</p>
+<p>The governing movement is:</p>
+<p><strong>MAP → TRIAGE → SELECT → SEQUENCE → JUDGE → REPAIR → REOPEN</strong></p>
+<p>A strong response does <strong>not</strong> use all twelve Tools. In most cases, three to five primary Tools will be enough.</p>
+<p>The question is not:</p>
+<blockquote>
+<p>Which ethical theory wins?</p>
+</blockquote>
+<p>The question is:</p>
+<blockquote>
+<p><strong>What does this system require us to notice, which Tools help us see it, what can we responsibly conclude, and what should happen next?</strong></p>
+</blockquote>
+<hr />
+<hr />
+<h1>SUPER Handoff Rule</h1>
+<p>The live Lab begins only after all twelve chapter Output Cards are <strong>READY</strong> in <code>ETHICS-SUPER-FINAL-1</code>.</p>
+<p>Export the <strong>PFLAB handoff JSON</strong> from SUPER and import it into the integrated Lab. The handoff contributes:</p>
+<ul>
+<li>twelve Tool Record entries;</li>
+<li>twelve current Output Cards;</li>
+<li>each Tool's claim ceiling and carry-forward question;</li>
+<li>the locked 3–5 primary Tool selection rule; and</li>
+<li>the Lab grammar <code>MAP → TRIAGE → SELECT → SEQUENCE → JUDGE → REPAIR → REOPEN</code>.</li>
+</ul>
+<p>The handoff does <strong>not</strong> choose Tools for you, determine their sequence, or authorize your final judgment.</p>
+<blockquote>
+<p><strong>Carry-forward ≠ automatic selection. Generate ≠ attribute ≠ authorize.</strong></p>
+</blockquote>
+<p>The integrated Lab may display the prior record as a cognitive aid, but Tool selection, sequencing, bounded judgment, repair, and REOPEN remain student-authored.</p>
+<hr />
+<h1>Two Organizing Questions: Power and Flourishing</h1>
+<p><strong>Power</strong> in this Lab means the capacity to shape the conditions under which other people act, choose, are represented, contest decisions, or reopen what has been decided.</p>
+<p>Power is not automatically illegitimate. A college needs power to register students, award grades, distribute aid, enforce safety rules, and organize programs. The ethical question is what power is doing, who can exercise it, what limits it, and whether people subject to it can challenge or repair its use.</p>
+<p><strong>Flourishing</strong> asks what forms of agency, learning, security, relationship, development, and real opportunity a system is supposed to make more possible.</p>
+<p>Flourishing is not one required life plan. A system may support one capability while weakening another. A policy intended to help students persist may, for example, improve access to advising while reducing privacy or practical control over registration.</p>
+<p>Power and Flourishing are <strong>not new Tool Cards</strong>. They are the two organizing questions that help you decide which existing Tools belong in the case.</p>
+<hr />
+<h1>The Frozen Tool Rack</h1>
+<p>Use the Tools as they were earned in Chapters 1–12. Do not rewrite the primary questions merely to make them fit your preferred answer.</p>
+<table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Tool</th>
+  <th>Primary scope</th>
+  <th>Canonical primary question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td><strong>Ethical Attention / First Map Audit</strong></td>
+  <td>PERSON / SITUATION / FIRST MAP</td>
+  <td>What happened? What am I adding? What am I in danger of not noticing?</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><strong>Examination / Reason-Giving Audit</strong></td>
+  <td>CLAIM / REASON / INFERENCE</td>
+  <td>What is the claim? What reasons support it? What follows, and what does not?</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><strong>Formation / Practical-Wisdom Audit</strong></td>
+  <td>CHARACTER / PRACTICE / FORMATION</td>
+  <td>What is this practice forming people to notice, enjoy, avoid, choose, and become?</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><strong>Control / Desire / Moral-Range Audit</strong></td>
+  <td>AGENCY / DESIRE / CONTINGENCY / RANGE</td>
+  <td>What am I treating as necessary? What can I influence? Whose good is inside the map?</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><strong>Moral Authority / Common-Good Audit</strong></td>
+  <td>RULE / POLICY</td>
+  <td>What gives this particular rule moral standing rather than mere enforceability?</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><strong>Legitimacy / Standing Audit</strong></td>
+  <td>INSTITUTION / AUTHORIZATION</td>
+  <td>Why may this institution exercise consequential authority over these people?</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><strong>Perspective / Moral-Visibility Audit</strong></td>
+  <td>MOTIVATION / PERSPECTIVE</td>
+  <td>What is moving the judgment? Whose situation is being represented, and how well?</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><strong>Respect / Duty / Autonomy Audit</strong></td>
+  <td>ACTION / PRINCIPLE / PERSON</td>
+  <td>Can the principle be justified without private exception, and does the action preserve the other's standing as an agent?</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><strong>Consequence / Welfare / Harm Audit</strong></td>
+  <td>OUTCOME / WELFARE / COERCION</td>
+  <td>Who is affected, what happens to them, how certain are we, how are burdens distributed, and what gives interference enough standing?</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><strong>Background Power / Genealogy Audit</strong></td>
+  <td>STRUCTURE / VALUE FORMATION</td>
+  <td>What is shaping the choice before the choice appears, and what is shaping the value used to judge it?</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><strong>Fair-Structure / Veil-of-Ignorance Audit</strong></td>
+  <td>BASIC STRUCTURE / OPPORTUNITY / DISTRIBUTION</td>
+  <td>Would I choose these rules without knowing which position would be mine?</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><strong>Dependency / Effective-Capability Audit</strong></td>
+  <td>CARE / CAPABILITY / SUSTAINING CONDITIONS</td>
+  <td>What can this person actually do and be, what support makes that possible, and whose capabilities bear the cost?</td>
+</tr>
+</tbody>
+</table>
+<p>Remember the book's standing rule:</p>
+<blockquote>
+<p><strong>A Tool helps you see. It does not automatically decide.</strong></p>
+</blockquote>
+<hr />
+<h1>The Case: Pathway Support System</h1>
+<h2>A system built to help</h2>
+<p>Harbor County College is a fictional open-access public college with about 18,500 students spread across several campuses and online programs.</p>
+<p>College leaders are worried about students disappearing from courses without asking for help. Advisors say that they often learn about a student's difficulty only after several missed assignments, a failed course, or a withdrawal. Faculty members report that they cannot always tell whether a quiet student is doing well, struggling privately, working long hours, caring for family members, or preparing to leave college.</p>
+<p>The college therefore pilots the <strong>Pathway Support System</strong>, or <strong>PSS</strong>.</p>
+<p>PSS is intended to identify students who may need support before a problem becomes a crisis.</p>
+<p>Every week, the system creates a support-priority score from 0 to 100.</p>
+<p>It uses information already held by the college:</p>
+<ul>
+<li>course activity recorded in the learning-management system;</li>
+<li>submitted and missed assignments;</li>
+<li>grades already entered by instructors;</li>
+<li>credits attempted and earned;</li>
+<li>course withdrawals and repeated courses;</li>
+<li>registration changes;</li>
+<li>financial-aid or payment holds;</li>
+<li>tutoring and advising contacts; and</li>
+<li>selected categories from advisor records, such as “requested academic support” or “difficulty contacting student.”</li>
+</ul>
+<p>The model does <strong>not</strong> directly use race, sex, disability diagnosis, medical records, religion, citizenship, or disciplinary history as inputs.</p>
+<p>Scores from <strong>70 to 100</strong> are placed in a high-priority advisor queue. Scores from <strong>50 to 69</strong> are marked moderate priority. Scores below 50 produce no special flag.</p>
+<p>The score is recalculated weekly.</p>
+<p>The pilot rule says the score is supposed to be used for <strong>support, not punishment</strong>.</p>
+<p>That sounds simple.</p>
+<p>The practice is less simple.</p>
+<hr />
+<h1>What happens after a flag</h1>
+<p>A high-priority student receives an email and text message saying that the college would like to connect the student with support.</p>
+<p>The assigned advisor also receives an alert.</p>
+<p>If the student responds, the advisor can discuss tutoring, emergency grants, course planning, financial-aid questions, transportation, food support, counseling referrals, technology access, or other services.</p>
+<p>If the student does not respond after seven days and a second outreach attempt, the advisor may place a temporary <strong>advising check-in hold</strong> on future registration changes. The hold does not remove the student from current classes, but the student must communicate with an advisor before changing or adding courses for the next term.</p>
+<p>The college describes this as a way to make sure that students who appear to be struggling do not disappear without contact.</p>
+<p>Some students describe it differently.</p>
+<hr />
+<h1>What students can see</h1>
+<p>Students receive a general privacy notice stating that academic and administrative information may be used to improve student support.</p>
+<p>They are not automatically shown:</p>
+<ul>
+<li>their PSS score;</li>
+<li>the exact variables contributing to the score;</li>
+<li>how much weight each variable receives; or</li>
+<li>why the threshold is set at 70.</li>
+</ul>
+<p>A student may ask an advisor why they were contacted. Advisors can see the broad categories contributing to the flag, but they do not see the full model or feature weights.</p>
+<p>If a college record is factually wrong, a student can use existing procedures to correct the record.</p>
+<p>There is no separate process for appealing the PSS score itself.</p>
+<p>The score is not placed on the academic transcript.</p>
+<p>PSS records are retained for two years for evaluation of the pilot.</p>
+<hr />
+<h1>What the pilot appears to show</h1>
+<p>PSS was tested for two semesters in 18 high-enrollment gateway courses.</p>
+<p>About 2,400 students were included.</p>
+<p>During the pilot:</p>
+<ul>
+<li>720 students received at least one high-priority flag;</li>
+<li>advisors made successful contact with 520 of those students;</li>
+<li>41% of the contacted students accepted at least one support service;</li>
+<li>61% of contacted high-priority students enrolled the following term;</li>
+<li>49% of high-priority students whom advisors did not successfully reach enrolled the following term;</li>
+<li>76% of students who never received a high-priority flag enrolled the following term;</li>
+<li>84 students received an advising check-in hold;</li>
+<li>17 of those students later reported that the hold delayed a desired registration change; and</li>
+<li>22% of high-priority flags were later annotated by advisors as requiring important context that the model did not contain.</li>
+</ul>
+<p>The institutional-research team gives a careful warning.</p>
+<p>The pilot was <strong>not randomized</strong>.</p>
+<p>Students successfully reached by advisors may differ from students who could not be reached. Students who were never flagged differ from flagged students in many ways. The numbers therefore do not prove that PSS caused the higher continuation rate among contacted students.</p>
+<p>The team concludes:</p>
+<blockquote>
+<p>The pilot provides evidence that targeted outreach may be useful, but it does not yet establish the size of the system's causal effect on persistence.</p>
+</blockquote>
+<p>The college has also <strong>not yet completed a full subgroup-impact audit</strong>. Protected characteristics are not direct model inputs, but the research team notes that apparently neutral variables can still interact with unequal background conditions.</p>
+<hr />
+<h1>Six views from inside the system</h1>
+<h2>1. Tasha — the outreach helped, but the score did not understand her</h2>
+<p>Tasha is 31 and completing prerequisites for a health program. She works evenings and helps care for her mother.</p>
+<p>She downloads readings when she has reliable internet and often studies offline. Her learning-management-system activity therefore looks irregular. During one difficult month she misses two assignment deadlines but later completes both.</p>
+<p>PSS flags her as high priority.</p>
+<p>An advisor contacts her and discovers that a transportation problem and an unexpected utility bill have put her close to dropping a course. The advisor helps her apply for a small emergency grant and connects her with a revised course plan.</p>
+<p>Tasha stays enrolled.</p>
+<p>She says the advisor helped.</p>
+<p>She also says:</p>
+<blockquote>
+<p>“If the college had simply asked whether I needed help, that would be one thing. What bothered me was learning later that a system had decided I was a risk before I even knew I was being scored.”</p>
+</blockquote>
+<p>She does not think the program should be eliminated. She wants students to know more about how the representation is produced and to have a way to challenge it.</p>
+<h2>2. Malik — the system saw a problem that was partly in the college's own data</h2>
+<p>Malik is 19 and taking four courses.</p>
+<p>One instructor records grades in batches rather than weekly. For nearly three weeks, several completed assignments appear in the system as ungraded. During the same period Malik misses one advising email because he has changed phone numbers.</p>
+<p>PSS flags him as high priority.</p>
+<p>He is surprised because he believes he is doing well.</p>
+<p>A temporary advising check-in hold appears shortly before registration opens. Malik contacts the advising office, but the earliest appointment is four days later. By the time the hold is removed, the section of a required course that fit his work schedule is full.</p>
+<p>The college later confirms that Malik had completed the assignments.</p>
+<p>No individual intended to block his schedule.</p>
+<p>The hold still changed his options.</p>
+<h2>3. Jonah — the flag caught a problem before he asked for help</h2>
+<p>Jonah is 22 and works variable hours.</p>
+<p>His first exam score is low. He then misses two assignments and begins opening course materials less often.</p>
+<p>He tells no instructor that his work hours have increased.</p>
+<p>PSS flags him.</p>
+<p>An advisor reaches him, helps him compare course options, and connects him with tutoring. Jonah later says that he probably would not have contacted anyone on his own.</p>
+<p>He passes the course.</p>
+<p>He describes the system as intrusive but useful.</p>
+<h2>4. Reina — the advisor who must turn a score into a human conversation</h2>
+<p>Reina advises more than 300 students.</p>
+<p>Before PSS, she says her outreach often depended on whichever student happened to contact her first, a faculty referral, or a problem already visible in a record.</p>
+<p>PSS gives her a way to prioritize limited time.</p>
+<p>She also worries about what the score does to her own attention.</p>
+<blockquote>
+<p>“When a student appears in red at the top of a queue, I have to remind myself that red means the system wants me to look. It does not mean I already know what is wrong.”</p>
+</blockquote>
+<p>Reina sometimes adds context to a student's record after a conversation, but she cannot directly change the model.</p>
+<p>She supports continuing PSS but opposes using the score for discipline, scholarships, admissions, or program eligibility.</p>
+<h2>5. Professor Chen — help can become expectation</h2>
+<p>Professor Chen teaches one of the gateway courses.</p>
+<p>During the pilot, instructors do not see the numerical score. They sometimes receive an “outreach recommended” notice.</p>
+<p>Chen appreciates earlier advising contact. She also notices a possible danger.</p>
+<p>If faculty begin to expect flagged students to fail, the flag could shape the very environment in which those students are trying to succeed.</p>
+<p>She asks:</p>
+<blockquote>
+<p>“Are we identifying a need, or are we quietly creating a category of student?”</p>
+</blockquote>
+<h2>6. The Student Success Council — a decision has to be made</h2>
+<p>The college's Student Success Council must recommend what happens next.</p>
+<p>The president wants a decision before the next registration cycle.</p>
+<p>The council is considering whether to:</p>
+<p><strong>A. Expand PSS college-wide in its current form.</strong></p>
+<p><strong>B. Expand it, but modify the design before expansion.</strong></p>
+<p><strong>C. Continue a limited pilot while repairing specific features and gathering stronger evidence.</strong></p>
+<p><strong>D. Keep voluntary outreach but suspend registration holds and other consequential uses until stronger justification exists.</strong></p>
+<p><strong>E. Pause or discontinue PSS.</strong></p>
+<p>The council is not required to choose one of these exact options. It may recommend a bounded alternative.</p>
+<p>Its decision must answer two questions:</p>
+<blockquote>
+<p><strong>What should the college do now?</strong></p>
+</blockquote>
+<p>and:</p>
+<blockquote>
+<p><strong>How strongly does the present map justify that action?</strong></p>
+</blockquote>
+<hr />
+<h1>Phase 1 — MAP</h1>
+<p>Do not begin by choosing your favorite theory.</p>
+<p>First reconstruct the system.</p>
+<p>Your map should identify:</p>
+<p><strong>People and positions.</strong> Who is represented in the case? Who is missing or weakly represented?</p>
+<p><strong>Decision points.</strong> Where does a person or system make a consequential choice?</p>
+<p><strong>Data flows.</strong> What enters the PSS representation? What does not?</p>
+<p><strong>Benefits.</strong> What does the system make easier, safer, or more possible?</p>
+<p><strong>Burdens.</strong> What costs, risks, restrictions, labels, or hidden work does it create?</p>
+<p><strong>Power.</strong> Who can alter another person's options, representation, access, or ability to contest?</p>
+<p><strong>Unknowns.</strong> What would you need to know before making a stronger judgment?</p>
+<p>Then sort your map into three categories:</p>
+<p><strong>ESTABLISHED IN THE CASE</strong> — information the dossier actually gives you.</p>
+<p><strong>INFERRED</strong> — conclusions you are drawing from that information.</p>
+<p><strong>UNKNOWN / MISSING</strong> — information that would matter but is not available.</p>
+<h3>First Firewall</h3>
+<p><strong>A score about a student ≠ the student.</strong></p>
+<h3>Second Firewall</h3>
+<p><strong>A useful prediction ≠ a complete explanation of why an individual student is struggling.</strong></p>
+<hr />
+<h1>Phase 2 — TRIAGE</h1>
+<p>Now identify the ethical layers actually present.</p>
+<p>You are not yet selecting philosophers.</p>
+<p>Ask which kinds of problems appear in the system.</p>
+<p>For example, you might find problems involving incomplete representation, weak evidence for a causal claim, rules and exceptions, institutional authority, perspective and stereotyping, respect for agency, benefit and harm, coercion, background inequality, fairness of institutional design, care burdens, or real access to support.</p>
+<p>Do not assume every layer is equally important.</p>
+<p>Your job is to identify the <strong>three to five most decision-relevant layers</strong>.</p>
+<p>A useful test is:</p>
+<blockquote>
+<p>If this layer were removed from the case, would my recommendation likely change?</p>
+</blockquote>
+<p>If not, it may be secondary rather than primary.</p>
+<hr />
+<h1>Phase 3 — SELECT</h1>
+<p>Choose <strong>three to five primary Tools</strong> from the frozen Tool Rack.</p>
+<p>For each selected Tool, state four things:</p>
+<p><strong>Fit.</strong> What feature of this case makes the Tool relevant?</p>
+<p><strong>Question.</strong> What does the Tool ask here?</p>
+<p><strong>Contribution.</strong> What does it help you see that another selected Tool might miss?</p>
+<p><strong>Limit.</strong> What can the Tool not establish by itself?</p>
+<p>A weak selection says:</p>
+<blockquote>
+<p>“I chose Kant because autonomy is important.”</p>
+</blockquote>
+<p>A stronger selection says:</p>
+<blockquote>
+<p>“I chose the Respect / Duty / Autonomy Audit because the college acts on a representation students do not automatically see or control. The Tool helps test whether support preserves the student as an agent rather than merely managing the student as a risk object. It does not by itself tell us whether the program improves persistence.”</p>
+</blockquote>
+<p>That last sentence matters.</p>
+<p>Tool selection includes Tool limits.</p>
+<hr />
+<h1>Phase 4 — SEQUENCE</h1>
+<p>Put your selected Tools in an order.</p>
+<p>There is no single required sequence.</p>
+<p>But your order must make intellectual sense.</p>
+<p>Suppose you choose:</p>
+<p><strong>Ethical Attention → Background Power → Consequence/Welfare/Harm → Respect/Duty/Autonomy → Dependency/Effective Capability</strong></p>
+<p>You might explain the order this way:</p>
+<ol>
+<li>Ethical Attention first separates what the system actually observes from the interpretation “student at risk.”</li>
+<li>Background Power then examines how the college's categories, incentives, schedules, and data system shape the choice before any single advisor acts.</li>
+<li>Consequence/Welfare/Harm asks what the system actually does to different people.</li>
+<li>Respect/Duty/Autonomy tests whether beneficial outreach is being achieved in a way that preserves the student's standing as an agent.</li>
+<li>Dependency/Effective Capability asks whether the support actually becomes usable opportunity under real conditions.</li>
+</ol>
+<p>Another student might reasonably begin with <strong>Reason-Giving</strong> because the college is making a causal claim about effectiveness, then move to <strong>Legitimacy</strong>, <strong>Consequences</strong>, <strong>Fairness</strong>, and <strong>Capability</strong>.</p>
+<p>Both sequences could be strong.</p>
+<p>The important question is:</p>
+<blockquote>
+<p><strong>Why does the next Tool need the map produced by the previous one?</strong></p>
+</blockquote>
+<p>Sequencing is part of the reasoning.</p>
+<hr />
+<h1>Phase 5 — JUDGE</h1>
+<p>Now make a bounded judgment.</p>
+<p>Choose the status that best fits your present map:</p>
+<h3>INSUFFICIENT MAP</h3>
+<p>The available evidence does not justify the consequential decision currently being proposed.</p>
+<p>This does not always mean “do nothing.” A low-risk temporary action may still be warranted while information is gathered.</p>
+<h3>PROVISIONALLY ACTIONABLE</h3>
+<p>The map is incomplete, but it contains enough of the right things to justify a limited, revisable action.</p>
+<p>The action should not be given more standing than the evidence has earned.</p>
+<h3>STRONGER JUDGMENT WARRANTED</h3>
+<p>The evidence and reasoning are strong enough to support a more confident institutional decision.</p>
+<p>Even here, REOPEN remains possible.</p>
+<p>Then state your recommendation.</p>
+<p>Examples of recommendation forms include:</p>
+<blockquote>
+<p>Continue voluntary outreach, but suspend registration holds until the college establishes a clearer authorization, contest process, and evidence of benefit.</p>
+</blockquote>
+<p>or:</p>
+<blockquote>
+<p>Continue the pilot with specified transparency and appeal repairs, while delaying college-wide expansion until subgroup effects and causal evidence are better understood.</p>
+</blockquote>
+<p>or:</p>
+<blockquote>
+<p>Expand the support function because the benefits are sufficiently supported, but prohibit the score from being used in program eligibility, discipline, scholarships, or other higher-stakes decisions.</p>
+</blockquote>
+<p>These are examples of <strong>forms</strong>, not model answers.</p>
+<p>You may reach a different conclusion.</p>
+<p>Your recommendation must include:</p>
+<p><strong>What should happen now?</strong></p>
+<p><strong>What should not happen yet?</strong></p>
+<p><strong>How strongly is your conclusion warranted?</strong></p>
+<p><strong>What does your evidence still not show?</strong></p>
+<hr />
+<h1>Phase 6 — REPAIR</h1>
+<p>A repair is not the sentence:</p>
+<blockquote>
+<p>“Make the system more ethical.”</p>
+</blockquote>
+<p>A repair targets an identified failure mode.</p>
+<p>For each repair, specify:</p>
+<p><strong>Failure mode.</strong> What exactly is going wrong?</p>
+<p><strong>Repair.</strong> What should change?</p>
+<p><strong>Responsible actor.</strong> Who has the power and standing to make the change?</p>
+<p><strong>Expected improvement.</strong> What problem should the repair reduce?</p>
+<p><strong>Possible new burden.</strong> What could the repair itself make worse?</p>
+<p><strong>Evidence.</strong> How would we know whether the repair worked?</p>
+<p>Possible repair targets might include student notice and explanation; score visibility; a way to contest or correct the representation; separation of supportive from coercive uses; registration-hold rules; advisor caseload; faculty access to flags; model-input governance; subgroup-impact auditing; retention of records; human review; documentation of exceptions; or limits on future uses.</p>
+<p>Do not assume that more transparency, more human review, or more data is automatically better. Each repair can create new costs.</p>
+<hr />
+<h1>Phase 7 — REOPEN</h1>
+<p>A responsible decision includes a route back into inquiry.</p>
+<p>Your REOPEN plan must identify at least three triggers.</p>
+<p>A trigger should be concrete enough that another person could recognize when it occurred.</p>
+<p>Weak:</p>
+<blockquote>
+<p>“REOPEN if something changes.”</p>
+</blockquote>
+<p>Stronger:</p>
+<blockquote>
+<p>“REOPEN if students receiving registration holds show a higher rate of lost course access than otherwise similar students who receive outreach without holds.”</p>
+</blockquote>
+<p>Weak:</p>
+<blockquote>
+<p>“REOPEN if students do not like the system.”</p>
+</blockquote>
+<p>Stronger:</p>
+<blockquote>
+<p>“REOPEN if recurring student reports show that PSS explanations are too vague to let students identify or contest the basis of a high-priority flag.”</p>
+</blockquote>
+<p>Your REOPEN plan should answer:</p>
+<p><strong>What result or evidence would make you reconsider?</strong></p>
+<p><strong>Who may raise the challenge?</strong></p>
+<p><strong>Who must review it?</strong></p>
+<p><strong>What part of the decision becomes open again?</strong></p>
+<p>REOPEN does not mean the original decision was necessarily wrong.</p>
+<p>It means the system was not granted permanent moral authority merely because it passed one review.</p>
+<hr />
+<h1>The Lab Record</h1>
+<p>Complete the following record. Your total written response should normally be <strong>about 750–1,000 words</strong>. Concise reasoning is better than repeating the chapter summaries.</p>
+<h2>A. Map — about 100–150 words</h2>
+<p><strong>Established:</strong> What are the most important facts supplied by the case?</p>
+<p><strong>Inferred:</strong> What are you concluding rather than directly observing?</p>
+<p><strong>Unknown:</strong> What missing information matters most?</p>
+<p><strong>Power:</strong> Who can change whose options, representation, or ability to contest?</p>
+<p><strong>Flourishing:</strong> What student capabilities or forms of flourishing is the system trying to support, and which might it weaken?</p>
+<h2>B. Triage — about 75–100 words</h2>
+<p>Identify the three to five ethical layers that matter most to the council's decision.</p>
+<p>Explain why these layers are more decision-relevant than the others.</p>
+<h2>C. Tool Selection — about 150–200 words</h2>
+<p>Choose three to five primary Tools.</p>
+<p>For each:</p>
+<p><strong>Tool:</strong><br />
+<strong>Why it fits:</strong><br />
+<strong>What it helps me see:</strong><br />
+<strong>What it does not establish:</strong></p>
+<h2>D. Sequence — about 75–125 words</h2>
+<p>Write your order:</p>
+<p><strong>1 → 2 → 3 → ...</strong></p>
+<p>Then explain why this sequence is better than treating the Tools as an unordered checklist.</p>
+<h2>E. Bounded Judgment — about 150–200 words</h2>
+<p>Choose:</p>
+<p><strong>INSUFFICIENT MAP / PROVISIONALLY ACTIONABLE / STRONGER JUDGMENT WARRANTED</strong></p>
+<p>Then answer:</p>
+<p><strong>What should the college do now?</strong></p>
+<p><strong>What should it not do yet?</strong></p>
+<p><strong>What does your present map justify?</strong></p>
+<p><strong>What does it still not justify?</strong></p>
+<h2>F. Repair — about 125–175 words</h2>
+<p>Name one or two targeted repairs.</p>
+<p>For each, identify the failure mode, responsible actor, expected improvement, possible new burden, and evidence of success.</p>
+<h2>G. REOPEN — about 75–125 words</h2>
+<p>Give at least three concrete REOPEN triggers.</p>
+<p>At least one should involve an outcome or evidence pattern.</p>
+<p>At least one should involve the standing of an affected person or group to challenge the system.</p>
+<p>At least one should involve an unintended consequence or burden.</p>
+<hr />
+<h1>Final Authorial Return</h1>
+<p>End with these two sentences:</p>
+<blockquote>
+<p><strong>The strongest part of my present map is __________ because __________.</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>The part I would be most prepared to REOPEN is __________ if __________.</strong></p>
+</blockquote>
+<p>You are not being graded on whether your conclusion matches the instructor's.</p>
+<p>You are being graded on whether the map, Tool selection, sequence, judgment, repair, and REOPEN fit one another.</p>
+<hr />
+<h1>Quick Tool-Selection Check</h1>
+<p>Before submitting, ask:</p>
+<ul>
+<li>Did I use three to five primary Tools rather than trying to impress the reader by naming all twelve?</li>
+<li>Can I explain why each selected Tool fits this case?</li>
+<li>Can I say what each Tool does not establish?</li>
+<li>Does the order of my Tools matter?</li>
+<li>Did I distinguish a useful prediction from a complete representation of a person?</li>
+<li>Did I distinguish benefit from authorization?</li>
+<li>Did I identify who has power to change the system?</li>
+<li>Did I identify what people are actually able to do and be, not only what resources are offered?</li>
+<li>Did I make a decision rather than hiding behind “more information is needed”?</li>
+<li>If I said more information is needed, did I specify what information and what decision it would affect?</li>
+<li>Did I propose a repair that targets a failure mode?</li>
+<li>Could someone tell when my REOPEN condition had been triggered?</li>
+</ul>
+<hr />
+<h1>Rubric — 10 Points</h1>
+<table>
+<thead>
+<tr>
+  <th>Dimension</th>
+  <th>0</th>
+  <th>1</th>
+  <th>2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>1. Map Quality</strong></td>
+  <td>Major facts, people, burdens, benefits, or unknowns are missing or confused.</td>
+  <td>Case is substantially mapped but important distinctions among fact, inference, unknown, power, or flourishing remain weak.</td>
+  <td>Map clearly distinguishes established facts, inference, unknowns, major perspectives, power relations, benefits, burdens, and relevant capabilities.</td>
+</tr>
+<tr>
+  <td><strong>2. Tool Fit</strong></td>
+  <td>Tools are named without meaningful connection to the case, or many Tools are applied indiscriminately.</td>
+  <td>Selected Tools are mostly relevant, but fit or limits are only partly explained.</td>
+  <td>Three to five Tools are selected because they fit distinct ethical layers; each contribution and limit is clear.</td>
+</tr>
+<tr>
+  <td><strong>3. Sequence and Reasoning</strong></td>
+  <td>Tools function as an unordered list or the conclusion outruns the reasons.</td>
+  <td>Sequence is present but only partly justified, or one important Firewall is crossed too quickly.</td>
+  <td>Sequence is purposeful; later Tools use the map produced by earlier ones; important Firewalls and limits are preserved.</td>
+</tr>
+<tr>
+  <td><strong>4. Bounded Judgment and Repair</strong></td>
+  <td>No real recommendation is made, or the recommendation/repair is vague and unsupported.</td>
+  <td>Recommendation is usable but its confidence, limits, or repair mechanism remains underdeveloped.</td>
+  <td>Judgment status fits the evidence; recommendation states what should happen now and not yet; repair targets an identified failure mode and considers possible new burdens.</td>
+</tr>
+<tr>
+  <td><strong>5. REOPEN</strong></td>
+  <td>REOPEN is absent or merely says to reconsider if something changes.</td>
+  <td>Some triggers are concrete, but challenge standing, evidence, or consequences are incomplete.</td>
+  <td>REOPEN includes concrete evidence/outcome, affected-party challenge, and unintended-consequence triggers, with a clear route back into review.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total: /10</strong></p>
+<hr />
+<h1>What a Strong Lab Demonstrates</h1>
+<p>A strong Lab does not prove that the student has memorized twelve philosophers.</p>
+<p>It demonstrates that the student can enter a complicated situation, build a bounded map, choose the Tools that fit, resist conclusions the Tools do not justify, make a decision strong enough for the evidence, target a repair, and preserve a route for correction.</p>
+<p>That is the mature form of the course's recurring question:</p>
+<blockquote>
+<p><strong>Is the present map sufficiently warranted for the decision this situation actually requires?</strong></p>
+</blockquote>
+<p>The Lab ends where responsible ethical action begins:</p>
+<p><strong>Act from the best sufficiently warranted map the task currently permits, but do not give the judgment more standing than the map has earned.</strong></p>
+</div></div></section>
+
+<section class="route" data-route="map"><div class="panel"><h2>MAP</h2>
+<div class="callout"><strong>Map ≠ World ≠ Person.</strong> Begin with what the case supports, mark what you infer, and keep affected people distinct from your representation of them.</div>
+<div class="field"><label>Initial map of the system</label><textarea data-field="map"></textarea></div>
+<div class="grid2"><div class="field"><label>Affected people and institutions</label><textarea data-field="affected_people_institutions"></textarea></div><div class="field"><label>Power map: who can shape options, burdens, representation, authorization, contest, or reopening?</label><textarea data-field="power_map"></textarea></div></div>
+<div class="grid3"><div class="field"><label>Established in the case</label><textarea data-field="established"></textarea></div><div class="field"><label>Inferred</label><textarea data-field="inferred"></textarea></div><div class="field"><label>Unknown / missing</label><textarea data-field="unknown"></textarea></div></div>
+<div class="field"><label>Provenance: what in the dossier supports the important claims in your map?</label><textarea data-field="provenance"></textarea></div>
+<h2>TRIAGE</h2><p>Identify the 3–5 most decision-relevant ethical layers before selecting Tools. Triage is not yet Tool selection.</p>
+<div class="field"><label>Decision-relevant layers</label><textarea data-field="triage"></textarea></div></div></section>
+
+<section class="route" data-route="select"><div class="panel"><h2>SELECT 3–5 primary Tools</h2>
+<div id="selectionStatus" class="callout warn">Load a valid handoff first.</div><div id="toolCards"></div></div></section>
+
+<section class="route" data-route="sequence"><div class="panel"><h2>SEQUENCE</h2><p>Order the selected Tools so that each inquiry improves the map needed by the next.</p><div id="sequenceList"></div>
+<div class="field"><label>Why this sequence?</label><textarea data-field="sequence_rationale"></textarea></div></div></section>
+
+<section class="route" data-route="judge"><div class="panel"><h2>JUDGE</h2>
+<div class="callout"><strong>Generate ≠ Recommend ≠ Authorize.</strong> A defensible proposal is not yet permission to impose it.</div>
+<div class="field"><label>Standing of the present map</label><select data-field="judgment_status"><option value="">Choose…</option><option>INSUFFICIENT MAP</option><option>PROVISIONALLY ACTIONABLE</option><option>STRONGER JUDGMENT WARRANTED</option></select></div>
+<div class="field"><label>What should the college do now?</label><textarea data-field="recommendation"></textarea></div>
+<div class="field"><label>Why is that strength of judgment warranted?</label><textarea data-field="judgment_warrant"></textarea></div>
+<div class="field"><label>Standing and authorization: who may implement, contest, revise, or stop this action—and why?</label><textarea data-field="standing_authorization"></textarea></div>
+<div class="field"><label>Claim ceiling: what does your evidence and Tool sequence support, and what does it not establish?</label><textarea data-field="claim_ceiling"></textarea></div>
+<div class="field"><label>If the map is insufficient, what stronger decision should wait and what lower-risk action remains justified now?</label><textarea data-field="bounded_action"></textarea></div>
+</div></section>
+
+<section class="route" data-route="repair"><div class="panel"><h2>REPAIR</h2>
+<div class="callout"><strong>Capability expansion for one person ≠ justified capability contraction for another.</strong> Make burden shifts visible and defend them rather than hiding them inside a beneficial average.</div>
+<div class="grid2">
+<div class="field"><label>1. Diagnosed failure mode or mechanism</label><textarea data-field="repair_failure"></textarea></div>
+<div class="field"><label>2. Proposed intervention</label><textarea data-field="repair_intervention"></textarea></div>
+<div class="field"><label>3. Actor with power / standing to implement</label><textarea data-field="repair_actor"></textarea></div>
+<div class="field"><label>4. Expected improvement</label><textarea data-field="repair_improvement"></textarea></div>
+<div class="field"><label>5. Capability effects: what becomes more or less possible for affected people?</label><textarea data-field="capability_effects"></textarea></div>
+<div class="field"><label>6. Burden-shift check: whose time, agency, care, opportunity, or standing may be consumed?</label><textarea data-field="repair_burden"></textarea></div>
+<div class="field"><label>7. Evidence of success</label><textarea data-field="repair_evidence"></textarea></div>
+</div></div></section>
+
+<section class="route" data-route="reopen"><div class="panel"><h2>REOPEN</h2>
+<div class="field"><label>Evidence / outcome trigger</label><textarea data-field="reopen_evidence"></textarea></div>
+<div class="field"><label>Affected-party challenge / standing trigger</label><textarea data-field="reopen_standing"></textarea></div>
+<div class="field"><label>Unintended-consequence / burden trigger</label><textarea data-field="reopen_burden"></textarea></div>
+<div class="field"><label>What part of the prior judgment would each trigger reopen?</label><textarea data-field="reopen_scope"></textarea></div>
+<h3>Authorial Return</h3><div class="field"><label>Two-sentence return: what judgment are you willing to own now, and what remains open?</label><textarea data-field="authorial_return"></textarea></div>
+</div></section>
+
+<section class="route" data-route="record"><div class="panel"><h2>Lab Record</h2>
+<div id="completionStatus" class="callout warn" role="status" aria-live="polite">Record incomplete.</div>
+<div class="actions"><button class="btn primary" id="exportJson">Export Lab Record JSON</button><button class="btn" id="buildText">Build readable record</button><button class="btn" id="exportRecovery">Export recovery JSON</button><label class="btn">Import recovery JSON<input id="recoveryFile" type="file" accept="application/json" hidden></label></div>
+<textarea id="readable" style="min-height:360px" aria-label="Readable Lab Record"></textarea>
+<h3>10-point rubric</h3><table class="rubric"><tr><th>Dimension</th><th>0–2</th></tr><tr><td>Map Quality</td><td>0–2</td></tr><tr><td>Tool Fit</td><td>0–2</td></tr><tr><td>Sequence and Reasoning</td><td>0–2</td></tr><tr><td>Bounded Judgment and Repair</td><td>0–2</td></tr><tr><td>REOPEN</td><td>0–2</td></tr></table>
+</div></section>
+
+<pre id="selftest" hidden></pre>
+</main></div>
+<script>
+const BUILD='ETHICS-PFLAB-2';
+const STORAGE='ethics.pflab.2';
+const LEGACY_STORAGE='ethics.pflab.integration1';
+const TOOLS=[{"tool_id": "TOOL-CH01", "chapter_id": "CH01", "name": "Ethical Attention / First Map Audit", "scope": "PERSON / SITUATION / FIRST MAP", "question": "What happened? What am I adding? What am I in danger of not noticing?"}, {"tool_id": "TOOL-CH02", "chapter_id": "CH02", "name": "Examination / Reason-Giving Audit", "scope": "CLAIM / REASON / INFERENCE", "question": "What is the claim? What reasons support it? What follows, and what does not?"}, {"tool_id": "TOOL-CH03", "chapter_id": "CH03", "name": "Formation / Practical-Wisdom Audit", "scope": "CHARACTER / PRACTICE / FORMATION", "question": "What is this practice forming people to notice, enjoy, avoid, choose, and become?"}, {"tool_id": "TOOL-CH04", "chapter_id": "CH04", "name": "Control / Desire / Moral-Range Audit", "scope": "AGENCY / DESIRE / CONTINGENCY / RANGE", "question": "What am I treating as necessary? What can I influence? Whose good is inside the map?"}, {"tool_id": "TOOL-CH05", "chapter_id": "CH05", "name": "Moral Authority / Common-Good Audit", "scope": "RULE / POLICY", "question": "What gives this particular rule moral standing rather than mere enforceability?"}, {"tool_id": "TOOL-CH06", "chapter_id": "CH06", "name": "Legitimacy / Standing Audit", "scope": "INSTITUTION / AUTHORIZATION", "question": "Why may this institution exercise consequential authority over these people?"}, {"tool_id": "TOOL-CH07", "chapter_id": "CH07", "name": "Perspective / Moral-Visibility Audit", "scope": "MOTIVATION / PERSPECTIVE", "question": "What is moving the judgment? Whose situation is being represented, and how well?"}, {"tool_id": "TOOL-CH08", "chapter_id": "CH08", "name": "Respect / Duty / Autonomy Audit", "scope": "ACTION / PRINCIPLE / PERSON", "question": "Can the principle be justified without private exception, and does the action preserve the other's standing as an agent?"}, {"tool_id": "TOOL-CH09", "chapter_id": "CH09", "name": "Consequence / Welfare / Harm Audit", "scope": "OUTCOME / WELFARE / COERCION", "question": "Who is affected, what happens to them, how certain are we, how are burdens distributed, and what gives interference enough standing?"}, {"tool_id": "TOOL-CH10", "chapter_id": "CH10", "name": "Background Power / Genealogy Audit", "scope": "STRUCTURE / VALUE FORMATION", "question": "What is shaping the choice before the choice appears, and what is shaping the value used to judge it?"}, {"tool_id": "TOOL-CH11", "chapter_id": "CH11", "name": "Fair-Structure / Veil-of-Ignorance Audit", "scope": "BASIC STRUCTURE / OPPORTUNITY / DISTRIBUTION", "question": "Would I choose these rules without knowing which position would be mine?"}, {"tool_id": "TOOL-CH12", "chapter_id": "CH12", "name": "Dependency / Effective-Capability Audit", "scope": "CARE / CAPABILITY / SUSTAINING CONDITIONS", "question": "What can this person actually do and be, what support makes that possible, and whose capabilities bear the cost?"}];
+const MOCK_HANDOFF={"handoff_schema": "ETHICS-PFLAB-HANDOFF-1", "source_build": "ETHICS-SUPER-FINAL-1", "content_version": "ETHICS-PB-PROD-3", "exported_at": "SELFTEST", "ready": true, "selection_rule": "Select 3\u20135 primary Tools; integration does not mean using everything.", "lab_grammar": "MAP \u2192 TRIAGE \u2192 SELECT \u2192 SEQUENCE \u2192 JUDGE \u2192 REPAIR \u2192 REOPEN", "power_flourishing_status": "Organizing questions, not additional Tools.", "tool_record": {"TOOL-CH01": {"chapter_id": "CH01", "tool_id": "TOOL-CH01", "tool_name": "Ethical Attention / First Map Audit", "made_visible": "Self-test visibility record for CH01", "claim_ceiling": "Self-test claim ceiling for CH01", "carry_forward": "Self-test carry-forward question for CH01", "output_card_ref": "OC-CH01"}, "TOOL-CH02": {"chapter_id": "CH02", "tool_id": "TOOL-CH02", "tool_name": "Examination / Reason-Giving Audit", "made_visible": "Self-test visibility record for CH02", "claim_ceiling": "Self-test claim ceiling for CH02", "carry_forward": "Self-test carry-forward question for CH02", "output_card_ref": "OC-CH02"}, "TOOL-CH03": {"chapter_id": "CH03", "tool_id": "TOOL-CH03", "tool_name": "Formation / Practical-Wisdom Audit", "made_visible": "Self-test visibility record for CH03", "claim_ceiling": "Self-test claim ceiling for CH03", "carry_forward": "Self-test carry-forward question for CH03", "output_card_ref": "OC-CH03"}, "TOOL-CH04": {"chapter_id": "CH04", "tool_id": "TOOL-CH04", "tool_name": "Control / Desire / Moral-Range Audit", "made_visible": "Self-test visibility record for CH04", "claim_ceiling": "Self-test claim ceiling for CH04", "carry_forward": "Self-test carry-forward question for CH04", "output_card_ref": "OC-CH04"}, "TOOL-CH05": {"chapter_id": "CH05", "tool_id": "TOOL-CH05", "tool_name": "Moral Authority / Common-Good Audit", "made_visible": "Self-test visibility record for CH05", "claim_ceiling": "Self-test claim ceiling for CH05", "carry_forward": "Self-test carry-forward question for CH05", "output_card_ref": "OC-CH05"}, "TOOL-CH06": {"chapter_id": "CH06", "tool_id": "TOOL-CH06", "tool_name": "Legitimacy / Standing Audit", "made_visible": "Self-test visibility record for CH06", "claim_ceiling": "Self-test claim ceiling for CH06", "carry_forward": "Self-test carry-forward question for CH06", "output_card_ref": "OC-CH06"}, "TOOL-CH07": {"chapter_id": "CH07", "tool_id": "TOOL-CH07", "tool_name": "Perspective / Moral-Visibility Audit", "made_visible": "Self-test visibility record for CH07", "claim_ceiling": "Self-test claim ceiling for CH07", "carry_forward": "Self-test carry-forward question for CH07", "output_card_ref": "OC-CH07"}, "TOOL-CH08": {"chapter_id": "CH08", "tool_id": "TOOL-CH08", "tool_name": "Respect / Duty / Autonomy Audit", "made_visible": "Self-test visibility record for CH08", "claim_ceiling": "Self-test claim ceiling for CH08", "carry_forward": "Self-test carry-forward question for CH08", "output_card_ref": "OC-CH08"}, "TOOL-CH09": {"chapter_id": "CH09", "tool_id": "TOOL-CH09", "tool_name": "Consequence / Welfare / Harm Audit", "made_visible": "Self-test visibility record for CH09", "claim_ceiling": "Self-test claim ceiling for CH09", "carry_forward": "Self-test carry-forward question for CH09", "output_card_ref": "OC-CH09"}, "TOOL-CH10": {"chapter_id": "CH10", "tool_id": "TOOL-CH10", "tool_name": "Background Power / Genealogy Audit", "made_visible": "Self-test visibility record for CH10", "claim_ceiling": "Self-test claim ceiling for CH10", "carry_forward": "Self-test carry-forward question for CH10", "output_card_ref": "OC-CH10"}, "TOOL-CH11": {"chapter_id": "CH11", "tool_id": "TOOL-CH11", "tool_name": "Fair-Structure / Veil-of-Ignorance Audit", "made_visible": "Self-test visibility record for CH11", "claim_ceiling": "Self-test claim ceiling for CH11", "carry_forward": "Self-test carry-forward question for CH11", "output_card_ref": "OC-CH11"}, "TOOL-CH12": {"chapter_id": "CH12", "tool_id": "TOOL-CH12", "tool_name": "Dependency / Effective-Capability Audit", "made_visible": "Self-test visibility record for CH12", "claim_ceiling": "Self-test claim ceiling for CH12", "carry_forward": "Self-test carry-forward question for CH12", "output_card_ref": "OC-CH12"}}, "output_cards": {"CH01": {"current_judgment": "Self-test bounded judgment CH01", "tool_used": "Ethical Attention / First Map Audit", "claim_ceiling": "Self-test claim ceiling for CH01"}, "CH02": {"current_judgment": "Self-test bounded judgment CH02", "tool_used": "Examination / Reason-Giving Audit", "claim_ceiling": "Self-test claim ceiling for CH02"}, "CH03": {"current_judgment": "Self-test bounded judgment CH03", "tool_used": "Formation / Practical-Wisdom Audit", "claim_ceiling": "Self-test claim ceiling for CH03"}, "CH04": {"current_judgment": "Self-test bounded judgment CH04", "tool_used": "Control / Desire / Moral-Range Audit", "claim_ceiling": "Self-test claim ceiling for CH04"}, "CH05": {"current_judgment": "Self-test bounded judgment CH05", "tool_used": "Moral Authority / Common-Good Audit", "claim_ceiling": "Self-test claim ceiling for CH05"}, "CH06": {"current_judgment": "Self-test bounded judgment CH06", "tool_used": "Legitimacy / Standing Audit", "claim_ceiling": "Self-test claim ceiling for CH06"}, "CH07": {"current_judgment": "Self-test bounded judgment CH07", "tool_used": "Perspective / Moral-Visibility Audit", "claim_ceiling": "Self-test claim ceiling for CH07"}, "CH08": {"current_judgment": "Self-test bounded judgment CH08", "tool_used": "Respect / Duty / Autonomy Audit", "claim_ceiling": "Self-test claim ceiling for CH08"}, "CH09": {"current_judgment": "Self-test bounded judgment CH09", "tool_used": "Consequence / Welfare / Harm Audit", "claim_ceiling": "Self-test claim ceiling for CH09"}, "CH10": {"current_judgment": "Self-test bounded judgment CH10", "tool_used": "Background Power / Genealogy Audit", "claim_ceiling": "Self-test claim ceiling for CH10"}, "CH11": {"current_judgment": "Self-test bounded judgment CH11", "tool_used": "Fair-Structure / Veil-of-Ignorance Audit", "claim_ceiling": "Self-test claim ceiling for CH11"}, "CH12": {"current_judgment": "Self-test bounded judgment CH12", "tool_used": "Dependency / Effective-Capability Audit", "claim_ceiling": "Self-test claim ceiling for CH12"}}};
+const emptyState=()=>({handoff:null,selected:[],sequence:[],rationales:{},fields:{},updated_at:null,migrated_from:null});
+let state=loadState();
+function loadState(){try{
+ const current=JSON.parse(localStorage.getItem(STORAGE)||'null');
+ if(current&&typeof current==='object') return Object.assign(emptyState(),current);
+ const legacy=JSON.parse(localStorage.getItem(LEGACY_STORAGE)||'null');
+ if(legacy&&typeof legacy==='object'){
+   const migrated=Object.assign(emptyState(),legacy,{migrated_from:'ETHICS-PFLAB-INTEGRATION-1'});
+   try{localStorage.setItem(STORAGE,JSON.stringify(migrated))}catch(e){}
+   return migrated;
+ }
+ return emptyState();
+}catch(e){return emptyState()}}
+function save(){state.updated_at=new Date().toISOString();try{localStorage.setItem(STORAGE,JSON.stringify(state))}catch(e){} renderCompletion()}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function download(name,text,type='application/json'){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},200)}
+function validateHandoff(h){
+ const errors=[];
+ if(!h||typeof h!=='object') errors.push('Not a JSON object.');
+ if(h?.handoff_schema!=='ETHICS-PFLAB-HANDOFF-1') errors.push('handoff_schema must be ETHICS-PFLAB-HANDOFF-1.');
+ if(h?.source_build!=='ETHICS-SUPER-FINAL-1') errors.push('source_build must be ETHICS-SUPER-FINAL-1.');
+ if(!['ETHICS-PB-PROD-2','ETHICS-PB-PROD-3'].includes(h?.content_version)) errors.push('content_version must be ETHICS-PB-PROD-2 or ETHICS-PB-PROD-3 during the SUPER migration window.');
+ if(h?.ready!==true) errors.push('SUPER handoff is not READY.');
+ const tr=h?.tool_record&&typeof h.tool_record==='object'?Object.keys(h.tool_record):[];
+ const oc=h?.output_cards&&typeof h.output_cards==='object'?Object.keys(h.output_cards):[];
+ if(tr.length!==12) errors.push(`Expected 12 Tool Record entries; found ${tr.length}.`);
+ if(oc.length!==12) errors.push(`Expected 12 Output Cards; found ${oc.length}.`);
+ for(const t of TOOLS) if(!h?.tool_record?.[t.tool_id]) errors.push(`Missing ${t.tool_id}.`);
+ return {ok:errors.length===0,errors,toolCount:tr.length,cardCount:oc.length};
+}
+function acceptHandoff(h){
+ const v=validateHandoff(h);
+ if(!v.ok) return v;
+ state.handoff=h;
+ state.selected=state.selected.filter(id=>h.tool_record[id]);
+ state.sequence=state.sequence.filter(id=>state.selected.includes(id));
+ save();renderAll();return v;
+}
+function handoffRecord(id){return state.handoff?.tool_record?.[id]||null}
+function renderHandoff(){
+ const v=validateHandoff(state.handoff);
+ const s=document.getElementById('handoffStatus'),r=document.getElementById('handoffReport');
+ if(v.ok){s.className='callout good';s.innerHTML=`<strong>LAB UNLOCKED</strong><br>Validated ${v.toolCount} Tool Record entries and ${v.cardCount} Output Cards from ETHICS-SUPER-FINAL-1.`;const migration=state.handoff.content_version==='ETHICS-PB-PROD-2'?'<p><strong>Compatibility:</strong> accepted legacy PROD-2 handoff during the SUPER migration window; PFLAB-2 records are governed by the final PROD-3 contract.</p>':'';r.innerHTML=`<p><strong>Content:</strong> ${esc(state.handoff.content_version)} · <strong>Source:</strong> ${esc(state.handoff.source_build)}</p><p><strong>Selection rule:</strong> ${esc(state.handoff.selection_rule)}</p>${migration}`}
+ else{s.className='callout warn';s.innerHTML='<strong>LAB LOCKED</strong><br>No validated SUPER handoff loaded.';r.innerHTML=v.errors.length?`<ul>${v.errors.map(e=>`<li>${esc(e)}</li>`).join('')}</ul>`:''}
+}
+function renderTools(){
+ const root=document.getElementById('toolCards'); const v=validateHandoff(state.handoff);
+ if(!v.ok){root.innerHTML='<p class="muted">Import a valid SUPER handoff to select from the Tool Record.</p>';document.getElementById('selectionStatus').textContent='Load a valid handoff first.';return}
+ root.innerHTML=TOOLS.map(t=>{const rec=handoffRecord(t.tool_id),sel=state.selected.includes(t.tool_id);return `<div class="tool ${sel?'selected':''}"><label><input type="checkbox" data-tool="${t.tool_id}" ${sel?'checked':''}> <strong>${esc(t.name)}</strong></label><div class="small muted">${esc(t.chapter_id)} · ${esc(t.scope)}</div><p><strong>Primary question:</strong> ${esc(t.question)}</p><details><summary>Carry-forward record from SUPER</summary><p><strong>Made visible:</strong> ${esc(rec?.made_visible||'—')}</p><p><strong>Claim ceiling:</strong> ${esc(rec?.claim_ceiling||'—')}</p><p><strong>Carry forward:</strong> ${esc(rec?.carry_forward||'—')}</p></details>${sel?`<div class="grid2"><div class="field"><label>Fit</label><textarea data-rationale="${t.tool_id}:fit">${esc(state.rationales?.[t.tool_id]?.fit||'')}</textarea></div><div class="field"><label>Question here</label><textarea data-rationale="${t.tool_id}:question">${esc(state.rationales?.[t.tool_id]?.question||'')}</textarea></div><div class="field"><label>Distinct contribution</label><textarea data-rationale="${t.tool_id}:contribution">${esc(state.rationales?.[t.tool_id]?.contribution||'')}</textarea></div><div class="field"><label>Limit</label><textarea data-rationale="${t.tool_id}:limit">${esc(state.rationales?.[t.tool_id]?.limit||'')}</textarea></div></div>`:''}</div>`}).join('');
+ root.querySelectorAll('[data-tool]').forEach(x=>x.onchange=()=>toggleTool(x.dataset.tool,x.checked));
+ root.querySelectorAll('[data-rationale]').forEach(x=>x.oninput=()=>{const [id,k]=x.dataset.rationale.split(':');state.rationales[id]=state.rationales[id]||{};state.rationales[id][k]=x.value;save()});
+ renderSelectionStatus();
+}
+function toggleTool(id,on){
+ if(on && state.selected.length>=5){alert('Select no more than 5 primary Tools.');renderTools();return}
+ if(on && !state.selected.includes(id)) state.selected.push(id);
+ if(!on){state.selected=state.selected.filter(x=>x!==id);state.sequence=state.sequence.filter(x=>x!==id)}
+ for(const x of state.selected) if(!state.sequence.includes(x)) state.sequence.push(x);
+ save();renderTools();renderSequence();
+}
+function renderSelectionStatus(){
+ const n=state.selected.length,s=document.getElementById('selectionStatus');
+ if(n>=3&&n<=5){s.className='callout good';s.textContent=`Selection valid: ${n} primary Tools.`}
+ else{s.className='callout warn';s.textContent=`Select 3–5 primary Tools. Currently selected: ${n}.`}
+}
+function renderSequence(){
+ const root=document.getElementById('sequenceList');
+ if(state.selected.length<3){root.innerHTML='<p class="muted">Select at least 3 Tools first.</p>';return}
+ state.sequence=state.sequence.filter(x=>state.selected.includes(x));for(const x of state.selected)if(!state.sequence.includes(x))state.sequence.push(x);
+ root.innerHTML=state.sequence.map((id,i)=>{const t=TOOLS.find(x=>x.tool_id===id);return `<div class="seqitem"><span>${i+1}. <strong>${esc(t.name)}</strong></span><button class="btn" data-up="${id}" ${i===0?'disabled':''}>↑</button><button class="btn" data-down="${id}" ${i===state.sequence.length-1?'disabled':''}>↓</button></div>`}).join('');
+ root.querySelectorAll('[data-up]').forEach(b=>b.onclick=()=>move(b.dataset.up,-1));root.querySelectorAll('[data-down]').forEach(b=>b.onclick=()=>move(b.dataset.down,1));
+}
+function move(id,d){const i=state.sequence.indexOf(id),j=i+d;if(i<0||j<0||j>=state.sequence.length)return;[state.sequence[i],state.sequence[j]]=[state.sequence[j],state.sequence[i]];save();renderSequence()}
+function bindFields(){
+ document.querySelectorAll('[data-field]').forEach(x=>{x.value=state.fields[x.dataset.field]||'';x.oninput=x.onchange=()=>{state.fields[x.dataset.field]=x.value;save()}})
+}
+function completed(){
+ const v=validateHandoff(state.handoff); if(!v.ok)return false;
+ if(state.selected.length<3||state.selected.length>5||state.sequence.length!==state.selected.length)return false;
+ for(const id of state.selected){const r=state.rationales[id]||{};if(!['fit','question','contribution','limit'].every(k=>(r[k]||'').trim()))return false}
+ const req=['map','affected_people_institutions','power_map','established','inferred','unknown','provenance','triage','sequence_rationale','judgment_status','recommendation','judgment_warrant','standing_authorization','claim_ceiling','bounded_action','repair_failure','repair_intervention','repair_actor','repair_improvement','capability_effects','repair_burden','repair_evidence','reopen_evidence','reopen_standing','reopen_burden','reopen_scope','authorial_return'];
+ return req.every(k=>(state.fields[k]||'').trim());
+}
+function renderCompletion(){const s=document.getElementById('completionStatus');if(!s)return;if(completed()){s.className='callout good';s.innerHTML='<strong>LAB RECORD COMPLETE</strong><br>All PFLAB-2 required phases are present. Export for submission.'}else{s.className='callout warn';s.innerHTML='<strong>RECORD IN PROGRESS</strong><br>Complete MAP/provenance, 3–5 Tool selection, sequence, bounded judgment, standing/authorization, repair/capability effects, claim ceiling, REOPEN, and Authorial Return.'}}
+function labRecord(){
+ return {
+  record_schema:'ETHICS-PFLAB-RECORD-2',build:BUILD,content_version:'ETHICS-PB-PROD-3',created_at:new Date().toISOString(),
+  source_handoff:state.handoff?{handoff_schema:state.handoff.handoff_schema,source_build:state.handoff.source_build,content_version:state.handoff.content_version,exported_at:state.handoff.exported_at}:null,
+  migration:{local_state_from:state.migrated_from||null,legacy_handoff_accepted:state.handoff?.content_version==='ETHICS-PB-PROD-2'},
+  selected_tools:state.sequence.map(id=>{const t=TOOLS.find(x=>x.tool_id===id);return {tool_id:id,chapter_id:t.chapter_id,tool_name:t.name,prior_record:handoffRecord(id),selection_rationale:state.rationales[id]||{}}}),
+  map:{initial:state.fields.map||'',affected_people_and_institutions:state.fields.affected_people_institutions||'',power_map:state.fields.power_map||'',established:state.fields.established||'',inferred:state.fields.inferred||'',unknown:state.fields.unknown||'',provenance:state.fields.provenance||''},
+  triage:state.fields.triage||'',
+  sequence_rationale:state.fields.sequence_rationale||'',
+  bounded_judgment:{status:state.fields.judgment_status||'',recommendation:state.fields.recommendation||'',warrant:state.fields.judgment_warrant||'',standing_and_authorization:state.fields.standing_authorization||'',claim_ceiling:state.fields.claim_ceiling||'',bounded_action:state.fields.bounded_action||''},
+  repair:{failure_mode:state.fields.repair_failure||'',intervention:state.fields.repair_intervention||'',actor:state.fields.repair_actor||'',expected_improvement:state.fields.repair_improvement||'',capability_effects:state.fields.capability_effects||'',burden_shift_check:state.fields.repair_burden||'',evidence_of_success:state.fields.repair_evidence||''},
+  reopen:{evidence_outcome_trigger:state.fields.reopen_evidence||'',affected_party_standing_trigger:state.fields.reopen_standing||'',unintended_burden_trigger:state.fields.reopen_burden||'',scope_reopened:state.fields.reopen_scope||''},
+  authorial_return:state.fields.authorial_return||'',
+  power_flourishing_status:'Organizing questions, not Tools 13 and 14.',
+  safeguards:['Map ≠ World ≠ Person','Generate ≠ Recommend ≠ Authorize','Current judgment ≠ final closure'],
+  complete:completed()
+ }
+}
+function readable(){
+ const r=labRecord();let x=`POWER & FLOURISHING LAB RECORD — PFLAB-2\n\nStatus: ${r.complete?'COMPLETE':'IN PROGRESS'}\n\nINITIAL MAP\n${r.map.initial}\n\nAFFECTED PEOPLE + INSTITUTIONS\n${r.map.affected_people_and_institutions}\n\nPOWER MAP\n${r.map.power_map}\n\nESTABLISHED\n${r.map.established}\n\nINFERRED\n${r.map.inferred}\n\nUNKNOWN\n${r.map.unknown}\n\nPROVENANCE\n${r.map.provenance}\n\nTRIAGE\n${r.triage}\n\nSELECT + SEQUENCE\n`;
+ r.selected_tools.forEach((t,i)=>{x+=`${i+1}. ${t.tool_name}\nFit: ${t.selection_rationale.fit||''}\nQuestion: ${t.selection_rationale.question||''}\nContribution: ${t.selection_rationale.contribution||''}\nLimit: ${t.selection_rationale.limit||''}\n\n`});
+ x+=`SEQUENCE RATIONALE\n${r.sequence_rationale}\n\nBOUNDED JUDGMENT\n${r.bounded_judgment.status}\nRecommendation: ${r.bounded_judgment.recommendation}\nWarrant: ${r.bounded_judgment.warrant}\nStanding / authorization: ${r.bounded_judgment.standing_and_authorization}\nClaim ceiling: ${r.bounded_judgment.claim_ceiling}\nBounded action: ${r.bounded_judgment.bounded_action}\n\nREPAIR\nFailure mode: ${r.repair.failure_mode}\nIntervention: ${r.repair.intervention}\nActor: ${r.repair.actor}\nExpected improvement: ${r.repair.expected_improvement}\nCapability effects: ${r.repair.capability_effects}\nBurden-shift check: ${r.repair.burden_shift_check}\nEvidence of success: ${r.repair.evidence_of_success}\n\nREOPEN\nEvidence/outcome: ${r.reopen.evidence_outcome_trigger}\nAffected-party/standing: ${r.reopen.affected_party_standing_trigger}\nUnintended burden: ${r.reopen.unintended_burden_trigger}\nWhat reopens: ${r.reopen.scope_reopened}\n\nAUTHORIAL RETURN\n${r.authorial_return}\n`;return x;
+}
+function renderAll(){renderHandoff();renderTools();renderSequence();bindFields();renderCompletion()}
+document.querySelectorAll('nav [data-route]').forEach((b,i)=>{b.setAttribute('aria-pressed',i===0?'true':'false');b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-pressed',active?'true':'false')});document.querySelectorAll('.route').forEach(x=>x.classList.toggle('active',x.dataset.route===b.dataset.route));renderAll()}});
+document.getElementById('handoffFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const h=JSON.parse(await f.text());const v=acceptHandoff(h);if(!v.ok)alert(v.errors.join('\n'))}catch(err){alert('Import failed: '+err.message)}e.target.value=''};
+document.getElementById('clearHandoff').onclick=()=>{state=emptyState();save();renderAll()};
+document.getElementById('exportJson').onclick=()=>download('ETHICS-PFLAB-2_LAB_RECORD.json',JSON.stringify(labRecord(),null,2));
+document.getElementById('buildText').onclick=()=>document.getElementById('readable').value=readable();
+document.getElementById('exportRecovery').onclick=()=>download('ETHICS-PFLAB-2_RECOVERY.json',JSON.stringify({recovery_schema:'ETHICS-PFLAB-RECOVERY-2',build:BUILD,state},null,2));
+document.getElementById('recoveryFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());if(x.recovery_schema!=='ETHICS-PFLAB-RECOVERY-1'||!x.state)throw new Error('Wrong recovery schema');state=Object.assign(emptyState(),x.state);save();renderAll()}catch(err){alert('Recovery import failed: '+err.message)}e.target.value=''};
+function selfTest(){
+ const out={};
+ state=emptyState();out.invalid_locked=!validateHandoff(state.handoff).ok;
+ out.handoff_prod2_compat=acceptHandoff(MOCK_HANDOFF).ok;
+ const prod3=JSON.parse(JSON.stringify(MOCK_HANDOFF));prod3.content_version='ETHICS-PB-PROD-3';out.handoff_prod3=validateHandoff(prod3).ok;
+ state.selected=['TOOL-CH01','TOOL-CH07','TOOL-CH12'];state.sequence=[...state.selected];
+ for(const id of state.selected) state.rationales[id]={fit:'fit',question:'question',contribution:'contribution',limit:'limit'};
+ const needed=['map','affected_people_institutions','power_map','established','inferred','unknown','provenance','triage','sequence_rationale','judgment_status','recommendation','judgment_warrant','standing_authorization','claim_ceiling','bounded_action','repair_failure','repair_intervention','repair_actor','repair_improvement','capability_effects','repair_burden','repair_evidence','reopen_evidence','reopen_standing','reopen_burden','reopen_scope','authorial_return'];
+ for(const k of needed) state.fields[k]=k==='judgment_status'?'PROVISIONALLY ACTIONABLE':'self-test';
+ out.three_tool_selection=state.selected.length===3;
+ out.canonical_ch7=TOOLS.find(t=>t.tool_id==='TOOL-CH07').name==='Perspective / Moral-Visibility Audit';
+ out.canonical_ch11=TOOLS.find(t=>t.tool_id==='TOOL-CH11').name==='Fair-Structure / Veil-of-Ignorance Audit';
+ out.complete=completed();
+ const rec=labRecord();
+ out.record_schema=rec.record_schema==='ETHICS-PFLAB-RECORD-2';
+ out.record_tools=rec.selected_tools.length===3;
+ out.record_claim_ceiling=rec.bounded_judgment.claim_ceiling==='self-test';
+ out.record_authorization=rec.bounded_judgment.standing_and_authorization==='self-test';
+ out.record_capabilities=rec.repair.capability_effects==='self-test';
+ out.record_reopen=rec.reopen.scope_reopened==='self-test';
+ out.record_authorial_return=rec.authorial_return==='self-test';
+ out.power_flourishing_not_tool=!TOOLS.some(t=>/Power and Flourishing/.test(t.name));
+ out.sequence_preserved=rec.selected_tools.map(x=>x.tool_id).join(',')===state.sequence.join(',');
+ out.pass=Object.values(out).every(Boolean);
+ document.getElementById('selftest').hidden=false;document.getElementById('selftest').textContent=JSON.stringify(out,null,2);renderAll();
+}
+if(new URLSearchParams(location.search).get('selftest')==='1') selfTest(); else renderAll();
+</script>
+</body></html>

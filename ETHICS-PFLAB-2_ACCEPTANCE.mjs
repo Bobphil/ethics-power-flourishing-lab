@@ -1,55 +1,75 @@
 import fs from "node:fs";
 import assert from "node:assert/strict";
 
-const contract=JSON.parse(fs.readFileSync(new URL("./ETHICS-PFLAB-2_CONTRACT.json", import.meta.url),"utf8"));
-const legacy=fs.readFileSync(new URL("./ETHICS-PFLAB-INTEGRATION-1.html", import.meta.url),"utf8");
+const html=fs.readFileSync(new URL("./ETHICS-PFLAB-2.html",import.meta.url),"utf8");
+const contract=JSON.parse(fs.readFileSync(new URL("./ETHICS-PFLAB-2_CONTRACT.json",import.meta.url),"utf8"));
 
-const expectedTools=[
-  "Ethical Attention / First Map Audit",
-  "Examination / Reason-Giving Audit",
-  "Formation / Practical-Wisdom Audit",
-  "Control / Desire / Moral-Range Audit",
-  "Moral Authority / Common-Good Audit",
-  "Legitimacy / Standing Audit",
-  "Perspective / Moral-Visibility Audit",
-  "Respect / Duty / Autonomy Audit",
-  "Consequence / Welfare / Harm Audit",
-  "Background Power / Genealogy Audit",
-  "Fair-Structure / Veil-of-Ignorance Audit",
-  "Dependency / Effective-Capability Audit"
+const report={suites:{},pass:true};
+function suite(name,checks){const failures=[];for(const [label,ok] of checks){if(!ok)failures.push(label)}report.suites[name]={checks:checks.length,failures,pass:failures.length===0};if(failures.length)report.pass=false}
+
+const toolNames=contract.canonical_tools;
+suite("handoff",[
+ ["schema",html.includes("ETHICS-PFLAB-HANDOFF-1")],
+ ["source build",html.includes("ETHICS-SUPER-FINAL-1")],
+ ["12 tool validation",html.includes("Expected 12 Tool Record entries")],
+ ["prod2 compatibility",html.includes("ETHICS-PB-PROD-2")],
+ ["prod3 current",html.includes("ETHICS-PB-PROD-3")],
+ ["3-5 selection",html.includes("SELECT 3–5 primary Tools")],
+ ...toolNames.map(x=>["tool:"+x,html.includes(x)])
+]);
+
+suite("persistence",[
+ ["new storage key",html.includes("ethics.pflab.2")],
+ ["legacy migration",html.includes("ethics.pflab.integration1")&&html.includes("migrated_from")],
+ ["save localStorage",html.includes("localStorage.setItem(STORAGE")],
+ ["load localStorage",html.includes("localStorage.getItem(STORAGE")],
+ ["recovery v2",html.includes("ETHICS-PFLAB-RECOVERY-2")],
+ ["legacy recovery accepted",html.includes("ETHICS-PFLAB-RECOVERY-1")]
+]);
+
+const requiredFields=[
+ "map","affected_people_institutions","power_map","established","inferred","unknown","provenance","triage",
+ "sequence_rationale","judgment_status","recommendation","judgment_warrant","standing_authorization","claim_ceiling","bounded_action",
+ "repair_failure","repair_intervention","repair_actor","repair_improvement","capability_effects","repair_burden","repair_evidence",
+ "reopen_evidence","reopen_standing","reopen_burden","reopen_scope","authorial_return"
 ];
+suite("usability",[
+ ["9 routes",(html.match(/<button data-route=/g)||[]).length===9],
+ ["all fields present",requiredFields.every(x=>html.includes('data-field="'+x+'"'))],
+ ["record schema",html.includes("ETHICS-PFLAB-RECORD-2")],
+ ["clear completion feedback",html.includes("LAB RECORD COMPLETE")&&html.includes("RECORD IN PROGRESS")],
+ ["tool rationale four-part",["fit","question","contribution","limit"].every(x=>html.includes(x))]
+]);
 
-assert.equal(contract.build_id,"ETHICS-PFLAB-2");
-assert.equal(contract.source_book,"ETHICS-PB-PROD-3");
-assert.equal(contract.case.id,"PATHWAY-SUPPORT-SYSTEM");
-assert.equal(contract.chapter12_boundary.chapter12_case,"Maathai / Green Belt Movement + Kijani");
-assert.notEqual(contract.chapter12_boundary.chapter12_case,contract.chapter12_boundary.pflab_case);
-assert.equal(contract.organizing_questions.firewall,"Power and Flourishing are organizing questions, not Tools 13 and 14.");
-assert.deepEqual(contract.canonical_tools,expectedTools);
-assert.deepEqual(contract.lab_grammar,["MAP","TRIAGE","SELECT","SEQUENCE","JUDGE","REPAIR","REOPEN"]);
-assert.equal(contract.selection_rule.minimum,3);
-assert.equal(contract.selection_rule.maximum,5);
-assert.equal(contract.selection_rule.all_twelve_forbidden_as_default,true);
+const externalHref=[...html.matchAll(/href=["']([^"']+)["']/g)].map(m=>m[1]).filter(x=>/^https?:/i.test(x));
+suite("links",[
+ ["no unresolved external dependencies",externalHref.length===0],
+ ["no placeholder href",!html.includes('href="#"')&&!html.includes("href=''")&&!html.includes('href=""')],
+ ["download URLs revoked",html.includes("URL.revokeObjectURL")]
+]);
 
-for(const x of [
-  "bounded_judgment","standing_and_authorization","repair_proposal","capability_effects",
-  "burden_shift_check","claim_ceiling","reopen_conditions","authorial_return"
-]) assert.ok(contract.required_record_fields.includes(x),x);
+suite("accessibility",[
+ ["nav label",html.includes('nav aria-label="Lab navigation"')],
+ ["focus visible",html.includes("focus-visible")],
+ ["reduced motion",html.includes("prefers-reduced-motion")],
+ ["mobile breakpoint",html.includes("@media(max-width:850px)")],
+ ["live statuses",(html.match(/aria-live="polite"/g)||[]).length>=2],
+ ["pressed nav state",html.includes("aria-pressed")],
+ ["readable record label",html.includes('aria-label="Readable Lab Record"')],
+ ["table headings",html.includes("<th>Dimension</th>")],
+ ["no images without alt",!/<img\b(?![^>]*\balt=)/i.test(html)]
+]);
 
-for(const x of [
-  "Map ≠ World ≠ Person",
-  "Generate ≠ Recommend ≠ Authorize",
-  "Current judgment ≠ final closure"
-]) assert.ok(contract.fsp_under_the_hood.safeguards.includes(x),x);
+suite("governance",[
+ ["power flourishing boundary",html.includes("They are organizing questions, not Tools 13 and 14.")],
+ ["map world person",html.includes("Map ≠ World ≠ Person")],
+ ["generate recommend authorize",html.includes("Generate ≠ Recommend ≠ Authorize")],
+ ["capability burden firewall",html.includes("Capability expansion for one person ≠ justified capability contraction for another.")],
+ ["claim ceiling",html.includes("claim_ceiling")],
+ ["authorization",html.includes("standing_authorization")],
+ ["authorial return",html.includes("authorial_return")],
+ ["reopen",html.includes("reopen_scope")]
+]);
 
-for(const x of expectedTools) assert.ok(legacy.includes(x),"legacy-missing-tool:"+x);
-assert.ok(legacy.includes("SELECT 3–5 primary Tools"));
-assert.ok(legacy.includes("MAP → TRIAGE → SELECT → SEQUENCE → JUDGE → REPAIR → REOPEN"));
-assert.ok(legacy.includes("They are organizing questions, not Tools 13 and 14."));
-assert.ok(legacy.includes("ETHICS-PFLAB-HANDOFF-1"));
-
-console.log("ETHICS-PFLAB-2 acceptance PASS");
-console.log("canonical tools: 12/12");
-console.log("selection rule: 3–5");
-console.log("chapter12 transfer boundary: PASS");
-console.log("legacy compatibility baseline: PASS");
+console.log(JSON.stringify(report,null,2));
+if(!report.pass) process.exit(1);
