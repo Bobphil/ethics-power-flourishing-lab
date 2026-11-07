@@ -38,3 +38,8 @@ The PFLAB uses the separate fictional **Pathway Support System / Student-Success
 ## Production gate
 
 **PRESSBOOKS READY + SUPER READY + PFLAB READY = COURSE READY**
+
+
+## SUPER handoff compatibility
+
+PFLAB-2 accepts both `ETHICS-SUPER-FINAL-1` and `ETHICS-SUPER-REDO-1` as valid `source_build` values during the SUPER migration window. The handoff must still satisfy `ETHICS-PFLAB-HANDOFF-1`, report `ready: true`, contain 12 Tool Record entries, and contain 12 Output Cards.
