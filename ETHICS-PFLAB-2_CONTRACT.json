@@ -1,0 +1,110 @@
+{
+  "build_id": "ETHICS-PFLAB-2",
+  "title": "Power and Flourishing Laboratory Reconciliation",
+  "status": "SPECIFICATION_FROZEN_PRE_INTERFACE",
+  "course_position": "After Chapter 12 and governed SUPER PFLAB gate",
+  "source_book": "ETHICS-PB-PROD-3",
+  "source_super": "ETHICS-SUPER-FINAL-1",
+  "handoff_contract": "ETHICS-PFLAB-HANDOFF-1",
+  "case": {
+    "id": "PATHWAY-SUPPORT-SYSTEM",
+    "label": "Pathway Support System / Student-Success-System",
+    "provenance": "FICTIONAL_TEACHING_CASE",
+    "purpose": "Transfer case distinct from the Chapter 12 Maathai workbook; requires cross-tool selection, sequencing, judgment, repair, and reopening."
+  },
+  "chapter12_boundary": {
+    "chapter12_case": "Maathai / Green Belt Movement + Kijani",
+    "chapter12_tool": "Dependency / Effective-Capability Audit",
+    "pflab_case": "Pathway Support System / Student-Success-System",
+    "rule": "CH12 workbook mastery feeds the Lab, but the Lab does not reuse Maathai as its primary case."
+  },
+  "organizing_questions": {
+    "power": "Who can shape conditions, options, representation, burden, contestability, authorization, and reopening?",
+    "flourishing": "What real forms of agency, security, relationship, learning, development, and opportunity can affected people actually exercise?",
+    "firewall": "Power and Flourishing are organizing questions, not Tools 13 and 14."
+  },
+  "canonical_tools": [
+    "Ethical Attention / First Map Audit",
+    "Examination / Reason-Giving Audit",
+    "Formation / Practical-Wisdom Audit",
+    "Control / Desire / Moral-Range Audit",
+    "Moral Authority / Common-Good Audit",
+    "Legitimacy / Standing Audit",
+    "Perspective / Moral-Visibility Audit",
+    "Respect / Duty / Autonomy Audit",
+    "Consequence / Welfare / Harm Audit",
+    "Background Power / Genealogy Audit",
+    "Fair-Structure / Veil-of-Ignorance Audit",
+    "Dependency / Effective-Capability Audit"
+  ],
+  "lab_grammar": [
+    "MAP",
+    "TRIAGE",
+    "SELECT",
+    "SEQUENCE",
+    "JUDGE",
+    "REPAIR",
+    "REOPEN"
+  ],
+  "selection_rule": {
+    "minimum": 3,
+    "maximum": 5,
+    "all_twelve_forbidden_as_default": true
+  },
+  "fsp_under_the_hood": {
+    "student_facing_rule": "Ethics-first. FSP vocabulary appears only when it clarifies an ethical move; students are not required to learn FSP as a separate framework.",
+    "safeguards": [
+      "Map ≠ World ≠ Person",
+      "Generate ≠ Recommend ≠ Authorize",
+      "Possibility ≠ recommendation ≠ authorization",
+      "Historical explanation ≠ present justification",
+      "Current judgment ≠ final closure",
+      "Shared representation ≠ shared ontology"
+    ]
+  },
+  "required_record_fields": [
+    "initial_map",
+    "affected_people_and_institutions",
+    "power_map",
+    "known_evidence",
+    "provenance",
+    "unknowns",
+    "triage_layers",
+    "selected_tools",
+    "tool_sequence",
+    "sequence_justification",
+    "bounded_judgment",
+    "standing_and_authorization",
+    "repair_proposal",
+    "capability_effects",
+    "burden_shift_check",
+    "claim_ceiling",
+    "reopen_conditions",
+    "authorial_return"
+  ],
+  "governance_rules": [
+    "The SUPER handoff may supply prior Tool Records, Output Cards, claim ceilings, and carry-forward questions, but it may not choose Tools or authorize the student's conclusion.",
+    "Each selected Tool must state what it reveals and what it cannot establish by itself.",
+    "Sequence must be justified: later Tools should receive a better map from earlier Tools.",
+    "Bounded judgment must distinguish evidence, inference, uncertainty, recommendation, and authorization.",
+    "Repair must target diagnosed mechanisms rather than merely state a preferred outcome.",
+    "Standing and authorization must identify who may implement, contest, revise, or stop the repair.",
+    "Capability effects must include both intended expansion and burdens shifted onto other people.",
+    "REOPEN conditions must be concrete enough to trigger reconsideration.",
+    "Authorial Return must state what the student now judges, what remains unresolved, and what would change that judgment."
+  ],
+  "launch_gates": [
+    "All twelve chapter Output Cards are READY before PFLAB handoff.",
+    "All promised case-resource links open successfully.",
+    "No dead buttons, links, or affordances.",
+    "Student progress persists through refresh and re-entry.",
+    "Exported Lab Record contains every required record field.",
+    "Keyboard-only path reaches every interactive control.",
+    "Mobile layout remains usable without horizontal page scrolling.",
+    "All images have meaningful alt text or are explicitly decorative.",
+    "Claim ceiling is visible in the final Lab Record.",
+    "REOPEN is visible in the final Lab Record.",
+    "Authorial Return is visible in the final Lab Record.",
+    "Pressbooks CH12 → SUPER PFLAB gate → PFLAB route is verified end to end."
+  ]
+}

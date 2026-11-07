@@ -1,11 +1,23 @@
 # Ethics Power & Flourishing Laboratory
 
-Production repository for `ETHICS-PFLAB-INTEGRATION-1`.
+Production repository for the Ethics capstone laboratory.
 
-## Published surfaces
+## Current deployed surface
 
 - `index.html` — root GitHub Pages entry
-- `ETHICS-PFLAB-INTEGRATION-1.html` — canonical versioned Lab entry
+- `ETHICS-PFLAB-INTEGRATION-1.html` — currently deployed integrated Lab
+
+## Reconciled production contract
+
+- `ETHICS-PFLAB-2.md` — pre-interface reconciliation specification
+- `ETHICS-PFLAB-2_CONTRACT.json` — machine-readable production contract
+- `ETHICS-PFLAB-2_ACCEPTANCE.mjs` — executable acceptance harness
+
+Run:
+
+```bash
+node ETHICS-PFLAB-2_ACCEPTANCE.mjs
+```
 
 ## Handoff contract
 
@@ -17,8 +29,12 @@ Student work remains governed by:
 
 Power and Flourishing remain organizing questions, not Tools 13 and 14.
 
-## Production lock
+## Course boundary
 
-Build: `ETHICS-PFLAB-INTEGRATION-1`  
-Expected SUPER source: `ETHICS-SUPER-FINAL-1`  
-Expected content version: `ETHICS-PB-PROD-2`
+Chapter 12 uses **Maathai / Green Belt Movement + Kijani** as its workbook case.
+
+The PFLAB uses the separate fictional **Pathway Support System / Student-Success-System** transfer case.
+
+## Production gate
+
+**PRESSBOOKS READY + SUPER READY + PFLAB READY = COURSE READY**
