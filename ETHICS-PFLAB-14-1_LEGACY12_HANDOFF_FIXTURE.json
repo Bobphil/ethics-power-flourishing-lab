@@ -1,0 +1,182 @@
+{
+  "handoff_schema": "ETHICS-PFLAB-HANDOFF-1",
+  "source_build": "ETHICS-SUPER-REDO-1",
+  "content_version": "ETHICS-PB-PROD-3",
+  "exported_at": "SELFTEST",
+  "ready": true,
+  "selection_rule": "Select 3–5 primary Tools; integration does not mean using everything.",
+  "lab_grammar": "MAP → TRIAGE → SELECT → SEQUENCE → JUDGE → REPAIR → REOPEN",
+  "power_flourishing_status": "Organizing questions, not additional Tools.",
+  "tool_record": {
+    "TOOL-CH01": {
+      "chapter_id": "CH01",
+      "tool_id": "TOOL-CH01",
+      "tool_name": "Ethical Attention / First Map Audit",
+      "made_visible": "Self-test visibility record for CH01",
+      "claim_ceiling": "Self-test claim ceiling for CH01",
+      "carry_forward": "Self-test carry-forward question for CH01",
+      "output_card_ref": "OC-CH01"
+    },
+    "TOOL-CH02": {
+      "chapter_id": "CH02",
+      "tool_id": "TOOL-CH02",
+      "tool_name": "Examination / Reason-Giving Audit",
+      "made_visible": "Self-test visibility record for CH02",
+      "claim_ceiling": "Self-test claim ceiling for CH02",
+      "carry_forward": "Self-test carry-forward question for CH02",
+      "output_card_ref": "OC-CH02"
+    },
+    "TOOL-CH03": {
+      "chapter_id": "CH03",
+      "tool_id": "TOOL-CH03",
+      "tool_name": "Formation / Practical-Wisdom Audit",
+      "made_visible": "Self-test visibility record for CH03",
+      "claim_ceiling": "Self-test claim ceiling for CH03",
+      "carry_forward": "Self-test carry-forward question for CH03",
+      "output_card_ref": "OC-CH03"
+    },
+    "TOOL-CH04": {
+      "chapter_id": "CH04",
+      "tool_id": "TOOL-CH04",
+      "tool_name": "Control / Desire / Moral-Range Audit",
+      "made_visible": "Self-test visibility record for CH04",
+      "claim_ceiling": "Self-test claim ceiling for CH04",
+      "carry_forward": "Self-test carry-forward question for CH04",
+      "output_card_ref": "OC-CH04"
+    },
+    "TOOL-CH05": {
+      "chapter_id": "CH05",
+      "tool_id": "TOOL-CH05",
+      "tool_name": "Moral Authority / Common-Good Audit",
+      "made_visible": "Self-test visibility record for CH05",
+      "claim_ceiling": "Self-test claim ceiling for CH05",
+      "carry_forward": "Self-test carry-forward question for CH05",
+      "output_card_ref": "OC-CH05"
+    },
+    "TOOL-CH06": {
+      "chapter_id": "CH06",
+      "tool_id": "TOOL-CH06",
+      "tool_name": "Legitimacy / Standing Audit",
+      "made_visible": "Self-test visibility record for CH06",
+      "claim_ceiling": "Self-test claim ceiling for CH06",
+      "carry_forward": "Self-test carry-forward question for CH06",
+      "output_card_ref": "OC-CH06"
+    },
+    "TOOL-CH07": {
+      "chapter_id": "CH07",
+      "tool_id": "TOOL-CH07",
+      "tool_name": "Perspective / Moral-Visibility Audit",
+      "made_visible": "Self-test visibility record for CH07",
+      "claim_ceiling": "Self-test claim ceiling for CH07",
+      "carry_forward": "Self-test carry-forward question for CH07",
+      "output_card_ref": "OC-CH07"
+    },
+    "TOOL-CH08": {
+      "chapter_id": "CH08",
+      "tool_id": "TOOL-CH08",
+      "tool_name": "Respect / Duty / Autonomy Audit",
+      "made_visible": "Self-test visibility record for CH08",
+      "claim_ceiling": "Self-test claim ceiling for CH08",
+      "carry_forward": "Self-test carry-forward question for CH08",
+      "output_card_ref": "OC-CH08"
+    },
+    "TOOL-CH09": {
+      "chapter_id": "CH09",
+      "tool_id": "TOOL-CH09",
+      "tool_name": "Consequence / Welfare / Harm Audit",
+      "made_visible": "Self-test visibility record for CH09",
+      "claim_ceiling": "Self-test claim ceiling for CH09",
+      "carry_forward": "Self-test carry-forward question for CH09",
+      "output_card_ref": "OC-CH09"
+    },
+    "TOOL-CH10": {
+      "chapter_id": "CH10",
+      "tool_id": "TOOL-CH10",
+      "tool_name": "Background Power / Genealogy Audit",
+      "made_visible": "Self-test visibility record for CH10",
+      "claim_ceiling": "Self-test claim ceiling for CH10",
+      "carry_forward": "Self-test carry-forward question for CH10",
+      "output_card_ref": "OC-CH10"
+    },
+    "TOOL-CH11": {
+      "chapter_id": "CH11",
+      "tool_id": "TOOL-CH11",
+      "tool_name": "Fair-Structure / Veil-of-Ignorance Audit",
+      "made_visible": "Self-test visibility record for CH11",
+      "claim_ceiling": "Self-test claim ceiling for CH11",
+      "carry_forward": "Self-test carry-forward question for CH11",
+      "output_card_ref": "OC-CH11"
+    },
+    "TOOL-CH12": {
+      "chapter_id": "CH12",
+      "tool_id": "TOOL-CH12",
+      "tool_name": "Dependency / Effective-Capability Audit",
+      "made_visible": "Self-test visibility record for CH12",
+      "claim_ceiling": "Self-test claim ceiling for CH12",
+      "carry_forward": "Self-test carry-forward question for CH12",
+      "output_card_ref": "OC-CH12"
+    }
+  },
+  "output_cards": {
+    "CH01": {
+      "current_judgment": "Self-test bounded judgment CH01",
+      "tool_used": "Ethical Attention / First Map Audit",
+      "claim_ceiling": "Self-test claim ceiling for CH01"
+    },
+    "CH02": {
+      "current_judgment": "Self-test bounded judgment CH02",
+      "tool_used": "Examination / Reason-Giving Audit",
+      "claim_ceiling": "Self-test claim ceiling for CH02"
+    },
+    "CH03": {
+      "current_judgment": "Self-test bounded judgment CH03",
+      "tool_used": "Formation / Practical-Wisdom Audit",
+      "claim_ceiling": "Self-test claim ceiling for CH03"
+    },
+    "CH04": {
+      "current_judgment": "Self-test bounded judgment CH04",
+      "tool_used": "Control / Desire / Moral-Range Audit",
+      "claim_ceiling": "Self-test claim ceiling for CH04"
+    },
+    "CH05": {
+      "current_judgment": "Self-test bounded judgment CH05",
+      "tool_used": "Moral Authority / Common-Good Audit",
+      "claim_ceiling": "Self-test claim ceiling for CH05"
+    },
+    "CH06": {
+      "current_judgment": "Self-test bounded judgment CH06",
+      "tool_used": "Legitimacy / Standing Audit",
+      "claim_ceiling": "Self-test claim ceiling for CH06"
+    },
+    "CH07": {
+      "current_judgment": "Self-test bounded judgment CH07",
+      "tool_used": "Perspective / Moral-Visibility Audit",
+      "claim_ceiling": "Self-test claim ceiling for CH07"
+    },
+    "CH08": {
+      "current_judgment": "Self-test bounded judgment CH08",
+      "tool_used": "Respect / Duty / Autonomy Audit",
+      "claim_ceiling": "Self-test claim ceiling for CH08"
+    },
+    "CH09": {
+      "current_judgment": "Self-test bounded judgment CH09",
+      "tool_used": "Consequence / Welfare / Harm Audit",
+      "claim_ceiling": "Self-test claim ceiling for CH09"
+    },
+    "CH10": {
+      "current_judgment": "Self-test bounded judgment CH10",
+      "tool_used": "Background Power / Genealogy Audit",
+      "claim_ceiling": "Self-test claim ceiling for CH10"
+    },
+    "CH11": {
+      "current_judgment": "Self-test bounded judgment CH11",
+      "tool_used": "Fair-Structure / Veil-of-Ignorance Audit",
+      "claim_ceiling": "Self-test claim ceiling for CH11"
+    },
+    "CH12": {
+      "current_judgment": "Self-test bounded judgment CH12",
+      "tool_used": "Dependency / Effective-Capability Audit",
+      "claim_ceiling": "Self-test claim ceiling for CH12"
+    }
+  }
+}
