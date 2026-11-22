@@ -36,12 +36,12 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Playwright
+      - name: Install Playwright library
         working-directory: pflab
         run: |
           npm init -y
           npm install playwright@1.57.0
-          npx playwright install --with-deps chromium
+          which google-chrome || which google-chrome-stable || which chromium || which chromium-browser
 
       - name: Start local committed-site servers
         run: |
