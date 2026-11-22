@@ -1,0 +1,356 @@
+{
+  "handoff_schema": "ETHICS-PFLAB-HANDOFF-1",
+  "source_build": "ETHICS-SUPER-14-1",
+  "content_version": "ETHICS-BEYOND-BOUNDARIES-14CH-2026-11-22",
+  "exported_at": "2026-11-22T21:52:16.617Z",
+  "ready": true,
+  "selection_rule": "Select 3–5 primary Tools; integration does not mean using everything.",
+  "lab_grammar": "MAP → TRIAGE → SELECT → SEQUENCE → JUDGE → REPAIR → REOPEN",
+  "power_flourishing_status": "Organizing questions, not additional Tools.",
+  "tool_record": {
+    "TOOL-CH01": {
+      "chapter_id": "CH01",
+      "tool_id": "TOOL-CH01",
+      "tool_name": "Ethical Attention / First Map Audit",
+      "made_visible": "browser made visible CH01",
+      "claim_ceiling": "Observed behavior ≠ known intention. Incomplete map ≠ impossible judgment.",
+      "carry_forward": "browser carry CH01",
+      "output_card_ref": "OC-CH01",
+      "status": "READY",
+      "updated_at": "2026-11-22T21:52:15.907Z"
+    },
+    "TOOL-CH02": {
+      "chapter_id": "CH02",
+      "tool_id": "TOOL-CH02",
+      "tool_name": "Examination / Reason-Giving Audit",
+      "made_visible": "browser made visible CH02",
+      "claim_ceiling": "Failed justification ≠ opposite conclusion proven. Authority approval ≠ sufficient explanation of justice.",
+      "carry_forward": "browser carry CH02",
+      "output_card_ref": "OC-CH02",
+      "status": "READY",
+      "updated_at": "2026-11-22T21:52:15.907Z"
+    },
+    "TOOL-CH03": {
+      "chapter_id": "CH03",
+      "tool_id": "TOOL-CH03",
+      "tool_name": "Formation / Practical-Wisdom Audit",
+      "made_visible": "browser made visible CH03",
+      "claim_ceiling": "Formation ≠ justification. Bad outcome ≠ every preventive act obligatory.",
+      "carry_forward": "browser carry CH03",
+      "output_card_ref": "OC-CH03",
+      "status": "READY",
+      "updated_at": "2026-11-22T21:52:15.907Z"
+    },
+    "TOOL-CH04": {
+      "chapter_id": "CH04",
+      "tool_id": "TOOL-CH04",
+      "tool_name": "Control / Desire / Moral-Range Audit",
+      "made_visible": "browser made visible CH04",
+      "claim_ceiling": "Not under control ≠ not important. Remaining agency ≠ unlimited obligation.",
+      "carry_forward": "browser carry CH04",
+      "output_card_ref": "OC-CH04",
+      "status": "READY",
+      "updated_at": "2026-11-22T21:52:15.907Z"
+    },
+    "TOOL-CH05": {
+      "chapter_id": "CH05",
+      "tool_id": "TOOL-CH05",
+      "tool_name": "Moral Authority / Common-Good Audit",
+      "made_visible": "browser made visible CH05",
+      "claim_ceiling": "Enactment ≠ sufficient bindingness. Good purpose ≠ one uniquely required policy.",
+      "carry_forward": "browser carry CH05",
+      "output_card_ref": "OC-CH05",
+      "status": "READY",
+      "updated_at": "2026-11-22T21:52:15.907Z"
+    },
+    "TOOL-CH06": {
+      "chapter_id": "CH06",
+      "tool_id": "TOOL-CH06",
+      "tool_name": "Legitimacy / Standing Audit",
+      "made_visible": "browser made visible CH06",
+      "claim_ceiling": "Power ≠ legitimacy. Illegitimacy ≠ unlimited authorization. Negotiation ≠ endorsement.",
+      "carry_forward": "browser carry CH06",
+      "output_card_ref": "OC-CH06",
+      "status": "READY",
+      "updated_at": "2026-11-22T21:52:15.907Z"
+    },
+    "TOOL-CH07": {
+      "chapter_id": "CH07",
+      "tool_id": "TOOL-CH07",
+      "tool_name": "Perspective / Moral-Visibility Audit",
+      "made_visible": "browser made visible CH07",
+      "claim_ceiling": "Sympathy ≠ direct access. Feeling strongly ≠ judging accurately. Institutional pattern ≠ individual wrongdoing.",
+      "carry_forward": "browser carry CH07",
+      "output_card_ref": "OC-CH07",
+      "status": "READY",
+      "updated_at": "2026-11-22T21:52:15.907Z"
+    },
+    "TOOL-CH08": {
+      "chapter_id": "CH08",
+      "tool_id": "TOOL-CH08",
+      "tool_name": "Respect / Duty / Autonomy Audit",
+      "made_visible": "browser made visible CH08",
+      "claim_ceiling": "Beneficial outcome ≠ permission to bypass agency. Autonomy ≠ preference sovereignty.",
+      "carry_forward": "browser carry CH08",
+      "output_card_ref": "OC-CH08",
+      "status": "READY",
+      "updated_at": "2026-11-22T21:52:15.907Z"
+    },
+    "TOOL-CH09": {
+      "chapter_id": "CH09",
+      "tool_id": "TOOL-CH09",
+      "tool_name": "Consequence / Welfare / Harm Audit",
+      "made_visible": "browser made visible CH09",
+      "claim_ceiling": "Aggregation ≠ fair distribution. Predicted benefit ≠ complete justification. Harm ≠ automatic coercive authority.",
+      "carry_forward": "browser carry CH09",
+      "output_card_ref": "OC-CH09",
+      "status": "READY",
+      "updated_at": "2026-11-22T21:52:15.907Z"
+    },
+    "TOOL-CH10": {
+      "chapter_id": "CH10",
+      "tool_id": "TOOL-CH10",
+      "tool_name": "Background Power / Genealogy Audit",
+      "made_visible": "browser made visible CH10",
+      "claim_ceiling": "Formal choice ≠ equal practical freedom. Structure ≠ no agency. Genealogy ≠ refutation.",
+      "carry_forward": "browser carry CH10",
+      "output_card_ref": "OC-CH10",
+      "status": "READY",
+      "updated_at": "2026-11-22T21:52:15.907Z"
+    },
+    "TOOL-CH11": {
+      "chapter_id": "CH11",
+      "tool_id": "TOOL-CH11",
+      "tool_name": "Fair-Structure / Veil-of-Ignorance Audit",
+      "made_visible": "browser made visible CH11",
+      "claim_ceiling": "Formal access ≠ fair opportunity. Higher average welfare ≠ justice. Inequality ≠ automatically unjust.",
+      "carry_forward": "browser carry CH11",
+      "output_card_ref": "OC-CH11",
+      "status": "READY",
+      "updated_at": "2026-11-22T21:52:15.907Z"
+    },
+    "TOOL-CH12": {
+      "chapter_id": "CH12",
+      "tool_id": "TOOL-CH12",
+      "tool_name": "Dependency / Effective-Capability Audit",
+      "made_visible": "browser made visible CH12",
+      "claim_ceiling": "Dependency ≠ absence of agency. Resource ≠ capability. Capability ≠ functioning. Care ≠ Capability.",
+      "carry_forward": "browser carry CH12",
+      "output_card_ref": "OC-CH12",
+      "status": "READY",
+      "updated_at": "2026-11-22T21:52:15.907Z"
+    },
+    "TOOL-CH13": {
+      "chapter_id": "CH13",
+      "tool_id": "TOOL-CH13",
+      "tool_name": "Agency-Conditions / Responsibility Audit",
+      "made_visible": "browser made visible CH13",
+      "claim_ceiling": "Caused ≠ coerced. Explanation ≠ automatic excuse. Felt insight ≠ verified truth.",
+      "carry_forward": "browser carry CH13",
+      "output_card_ref": "OC-CH13",
+      "status": "READY",
+      "updated_at": "2026-11-22T21:52:15.907Z"
+    },
+    "TOOL-CH14": {
+      "chapter_id": "CH14",
+      "tool_id": "TOOL-CH14",
+      "tool_name": "Moral-Circle / Enclosure / Shared-Task Audit",
+      "made_visible": "browser made visible CH14",
+      "claim_ceiling": "Competence ≠ moral standing. AI-assisted ≠ AI-decided. Suspecting Dark Coherence ≠ establishing it.",
+      "carry_forward": "browser carry CH14",
+      "output_card_ref": "OC-CH14",
+      "status": "READY",
+      "updated_at": "2026-11-22T21:52:15.907Z"
+    }
+  },
+  "output_cards": {
+    "CH01": {
+      "judgment": "browser bounded judgment CH01",
+      "pressure": "browser pressure CH01",
+      "specific": {
+        "observed": "browser acceptance CH01 observed",
+        "added": "browser acceptance CH01 added",
+        "missing": "browser acceptance CH01 missing"
+      },
+      "claim_ceiling": "Observed behavior ≠ known intention. Incomplete map ≠ impossible judgment.",
+      "response": "Act on the bounded judgment",
+      "carry": "browser carry CH01"
+    },
+    "CH02": {
+      "judgment": "browser bounded judgment CH02",
+      "pressure": "browser pressure CH02",
+      "specific": {
+        "claim": "browser acceptance CH02 claim",
+        "reason": "browser acceptance CH02 reason",
+        "license": "browser acceptance CH02 license"
+      },
+      "claim_ceiling": "Failed justification ≠ opposite conclusion proven. Authority approval ≠ sufficient explanation of justice.",
+      "response": "Accept provisionally",
+      "carry": "browser carry CH02"
+    },
+    "CH03": {
+      "judgment": "browser bounded judgment CH03",
+      "pressure": "browser pressure CH03",
+      "specific": {
+        "formation": "browser acceptance CH03 formation",
+        "demand": "browser acceptance CH03 demand",
+        "why": "browser acceptance CH03 why"
+      },
+      "claim_ceiling": "Formation ≠ justification. Bad outcome ≠ every preventive act obligatory.",
+      "response": "Act / escalate",
+      "carry": "browser carry CH03"
+    },
+    "CH04": {
+      "judgment": "browser bounded judgment CH04",
+      "pressure": "browser pressure CH04",
+      "specific": {
+        "outside": "browser acceptance CH04 outside",
+        "remaining": "browser acceptance CH04 remaining",
+        "boundary": "browser acceptance CH04 boundary"
+      },
+      "claim_ceiling": "Not under control ≠ not important. Remaining agency ≠ unlimited obligation.",
+      "response": "Use remaining agency",
+      "carry": "browser carry CH04"
+    },
+    "CH05": {
+      "judgment": "browser bounded judgment CH05",
+      "pressure": "browser pressure CH05",
+      "specific": {
+        "good": "browser acceptance CH05 good",
+        "binds": "browser acceptance CH05 binds",
+        "exception": "browser acceptance CH05 exception",
+        "scope": "browser acceptance CH05 scope"
+      },
+      "claim_ceiling": "Enactment ≠ sufficient bindingness. Good purpose ≠ one uniquely required policy.",
+      "response": "Enforce",
+      "carry": "browser carry CH05"
+    },
+    "CH06": {
+      "judgment": "browser bounded judgment CH06",
+      "pressure": "browser pressure CH06",
+      "specific": {
+        "standing": "browser acceptance CH06 standing",
+        "limit": "browser acceptance CH06 limit",
+        "strategy": "browser acceptance CH06 strategy",
+        "trigger": "browser acceptance CH06 trigger",
+        "reconstruction": "browser acceptance CH06 reconstruction"
+      },
+      "claim_ceiling": "Power ≠ legitimacy. Illegitimacy ≠ unlimited authorization. Negotiation ≠ endorsement.",
+      "response": "Resist",
+      "carry": "browser carry CH06"
+    },
+    "CH07": {
+      "judgment": "browser bounded judgment CH07",
+      "pressure": "browser pressure CH07",
+      "specific": {
+        "suffering": "browser acceptance CH07 suffering",
+        "standpoint": "browser acceptance CH07 standpoint",
+        "gap": "browser acceptance CH07 gap",
+        "level": "browser acceptance CH07 level",
+        "intervention": "browser acceptance CH07 intervention"
+      },
+      "claim_ceiling": "Sympathy ≠ direct access. Feeling strongly ≠ judging accurately. Institutional pattern ≠ individual wrongdoing.",
+      "response": "Protect the affected resident",
+      "carry": "browser carry CH07"
+    },
+    "CH08": {
+      "judgment": "browser bounded judgment CH08",
+      "pressure": "browser pressure CH08",
+      "specific": {
+        "options": "browser acceptance CH08 options",
+        "information": "browser acceptance CH08 information",
+        "influence": "browser acceptance CH08 influence",
+        "authorship": "browser acceptance CH08 authorship",
+        "maxim": "browser acceptance CH08 maxim"
+      },
+      "claim_ceiling": "Beneficial outcome ≠ permission to bypass agency. Autonomy ≠ preference sovereignty.",
+      "response": "Disclose and recommend strongly",
+      "carry": "browser carry CH08"
+    },
+    "CH09": {
+      "judgment": "browser bounded judgment CH09",
+      "pressure": "browser pressure CH09",
+      "specific": {
+        "benefit": "browser acceptance CH09 benefit",
+        "burden": "browser acceptance CH09 burden",
+        "who": "browser acceptance CH09 who",
+        "confidence": "browser acceptance CH09 confidence",
+        "liberty": "browser acceptance CH09 liberty",
+        "alternative": "browser acceptance CH09 alternative"
+      },
+      "claim_ceiling": "Aggregation ≠ fair distribution. Predicted benefit ≠ complete justification. Harm ≠ automatic coercive authority.",
+      "response": "Adopt",
+      "carry": "browser carry CH09"
+    },
+    "CH10": {
+      "judgment": "browser bounded judgment CH10",
+      "pressure": "browser pressure CH10",
+      "specific": {
+        "formal": "browser acceptance CH10 formal",
+        "leverage": "browser acceptance CH10 leverage",
+        "control": "browser acceptance CH10 control",
+        "value": "browser acceptance CH10 value"
+      },
+      "claim_ceiling": "Formal choice ≠ equal practical freedom. Structure ≠ no agency. Genealogy ≠ refutation.",
+      "response": "Change material conditions",
+      "carry": "browser carry CH10"
+    },
+    "CH11": {
+      "judgment": "browser bounded judgment CH11",
+      "pressure": "browser pressure CH11",
+      "specific": {
+        "rule": "browser acceptance CH11 rule",
+        "hidden": "browser acceptance CH11 hidden",
+        "opportunity": "browser acceptance CH11 opportunity",
+        "inequality": "browser acceptance CH11 inequality",
+        "veil": "browser acceptance CH11 veil"
+      },
+      "claim_ceiling": "Formal access ≠ fair opportunity. Higher average welfare ≠ justice. Inequality ≠ automatically unjust.",
+      "response": "Adopt rule",
+      "carry": "browser carry CH11"
+    },
+    "CH12": {
+      "judgment": "browser bounded judgment CH12",
+      "pressure": "browser pressure CH12",
+      "specific": {
+        "task": "browser acceptance CH12 task",
+        "capability": "browser acceptance CH12 capability",
+        "conversion": "browser acceptance CH12 conversion",
+        "care": "browser acceptance CH12 care",
+        "power": "browser acceptance CH12 power",
+        "durability": "browser acceptance CH12 durability"
+      },
+      "claim_ceiling": "Dependency ≠ absence of agency. Resource ≠ capability. Capability ≠ functioning. Care ≠ Capability.",
+      "response": "Improve conversion conditions",
+      "carry": "browser carry CH12"
+    },
+    "CH13": {
+      "judgment": "browser bounded judgment CH13",
+      "pressure": "browser pressure CH13",
+      "specific": {
+        "capacity": "browser acceptance CH13 capacity",
+        "change": "browser acceptance CH13 change",
+        "status": "browser acceptance CH13 status",
+        "forward": "browser acceptance CH13 forward",
+        "authorization": "browser acceptance CH13 authorization"
+      },
+      "claim_ceiling": "Caused ≠ coerced. Explanation ≠ automatic excuse. Felt insight ≠ verified truth.",
+      "response": "Reduce / redirect blame",
+      "carry": "browser carry CH13"
+    },
+    "CH14": {
+      "judgment": "browser bounded judgment CH14",
+      "pressure": "browser pressure CH14",
+      "specific": {
+        "standing": "browser acceptance CH14 standing",
+        "tool_role": "browser acceptance CH14 tool_role",
+        "unheard": "browser acceptance CH14 unheard",
+        "shared_task": "browser acceptance CH14 shared_task",
+        "return": "browser acceptance CH14 return"
+      },
+      "claim_ceiling": "Competence ≠ moral standing. AI-assisted ≠ AI-decided. Suspecting Dark Coherence ≠ establishing it.",
+      "response": "Proceed with safeguards",
+      "carry": "browser carry CH14"
+    }
+  }
+}

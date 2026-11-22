@@ -1,0 +1,73 @@
+{
+  "checks": {
+    "super_loads_14": {
+      "pass": true,
+      "detail": ""
+    },
+    "super_bound_to_pflab14": {
+      "pass": true,
+      "detail": "https://bobphil.github.io/ethics-power-flourishing-lab/ETHICS-PFLAB-14-1.html"
+    },
+    "super_14of14_ready": {
+      "pass": true,
+      "detail": "PFLAB-14-1 handoff\nREADY FOR LAB\nAll fourteen Output Cards are READY. Tool selection and sequencing can now become the student’s responsibility.\n\nTool Record: 14/14 entries accumulated.\n\nLab grammar: MAP → TRIAGE → SELECT → SEQUENCE → JUDGE → REPAIR → REOPEN\n\nFirewalls: Integration ≠ using everythin"
+    },
+    "super_lab_launch_enabled": {
+      "pass": true,
+      "detail": ""
+    },
+    "handoff_source": {
+      "pass": true,
+      "detail": "ETHICS-SUPER-14-1"
+    },
+    "handoff_ready": {
+      "pass": true,
+      "detail": "true"
+    },
+    "handoff_tool_count": {
+      "pass": true,
+      "detail": "14"
+    },
+    "handoff_card_count": {
+      "pass": true,
+      "detail": "14"
+    },
+    "handoff_ch13": {
+      "pass": true,
+      "detail": ""
+    },
+    "handoff_ch14": {
+      "pass": true,
+      "detail": ""
+    },
+    "pflab_current14_mode": {
+      "pass": true,
+      "detail": "Content: ETHICS-BEYOND-BOUNDARIES-14CH-2026-11-22 · Source: ETHICS-SUPER-14-1 · Profile: CURRENT_14\n\nSelection rule: Select 3–5 primary Tools; integration does not mean using everything.\n\nCurrent mode: fourteen earned Tools and fourteen Output Cards are available for selection."
+    },
+    "pflab_ch13_enabled": {
+      "pass": true,
+      "detail": ""
+    },
+    "pflab_ch14_enabled": {
+      "pass": true,
+      "detail": ""
+    },
+    "pflab_legacy12_mode": {
+      "pass": true,
+      "detail": "Content: ETHICS-PB-PROD-3 · Source: ETHICS-SUPER-REDO-1 · Profile: LEGACY_12\n\nSelection rule: Select 3–5 primary Tools; integration does not mean using everything.\n\nCompatibility mode: this is a valid legacy 12-tool handoff. CH13 and CH14 are visible in the current Tool Rack but remain unavailable for selection because no prior student records exist for them. No student work is synthesized."
+    },
+    "legacy_ch13_disabled": {
+      "pass": true,
+      "detail": ""
+    },
+    "legacy_ch14_disabled": {
+      "pass": true,
+      "detail": ""
+    },
+    "pflab_selftest": {
+      "pass": true,
+      "detail": "{\"invalid_locked\":true,\"legacy12_valid\":true,\"legacy12_profile\":true,\"current14_valid\":true,\"current14_profile\":true,\"current14_counts\":true,\"reject_incomplete14\":true,\"reject_13item_legacy\":true,\"toolrack_14\":true,\"canonical_ch13\":true,\"canonical_ch14\":true,\"three_tool_selection\":true,\"complete\":true,\"record_schema\":true,\"record_profile\":true,\"record_tools\":true,\"record_ch13\":true,\"record_ch14\":true,\"record_claim_ceiling\":true,\"record_authorization\":true,\"record_capabilities\":true,\"record_reopen\":true,\"record_authorial_return\":true,\"power_flourishing_not_additional_tool\":true,\"sequence_preserved\":true,\"legacy12_ch13_absent\":true,\"legacy12_ch14_absent\":true,\"pass\":true}"
+    }
+  },
+  "pass": true
+}
