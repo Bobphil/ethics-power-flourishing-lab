@@ -11,6 +11,9 @@ on:
       - '.github/workflows/super14-pflab14-browser.yml'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   browser-acceptance:
     runs-on: ubuntu-latest
@@ -49,6 +52,16 @@ jobs:
       - name: Run current + legacy browser handoff acceptance
         working-directory: pflab
         run: node ETHICS-SUPER-PFLAB-14_BROWSER_ACCEPTANCE.mjs
+
+      - name: Commit browser PASS receipt
+        if: success()
+        working-directory: pflab
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ETHICS-SUPER-PFLAB-14_BROWSER_PASS.json browser-handoff-14.json
+          git commit -m "Record SUPER14-PFLAB14 browser acceptance PASS" || exit 0
+          git push
 
       - name: Save acceptance receipt
         if: always()
