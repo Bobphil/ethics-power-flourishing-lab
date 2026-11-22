@@ -111,4 +111,5 @@ ok('pflab_selftest',selfJson.pass===true,JSON.stringify(selfJson));
 
 await browser.close();
 out.pass=Object.values(out.checks).every(x=>x.pass);
-await fs.writeFile('ETHICS-SUPER-PFLAB-14_BROWSER_PASS.json',JSON.stringify(out,null,2)+'\n','utf8');\nconsole.log(JSON.stringify(out,null,2));
+await fs.writeFile('ETHICS-SUPER-PFLAB-14_BROWSER_PASS.json',JSON.stringify(out,null,2)+'\n','utf8');
+console.log(JSON.stringify(out,null,2));
