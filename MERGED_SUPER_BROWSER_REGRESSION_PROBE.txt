@@ -1,2 +1,3 @@
 Trigger fresh browser regression against the newly installed merged SUPER-14 content and 14-chapter routing manifest.
 Retry after widening the CH1 explanation-layer assertion.
+Final rerun after PFLAB-14 visible-label cleanup in merged SUPER.
