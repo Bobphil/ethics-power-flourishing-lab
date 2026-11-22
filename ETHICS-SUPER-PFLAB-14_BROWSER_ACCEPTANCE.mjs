@@ -117,10 +117,16 @@ const lab=await ctx.newPage();
 await lab.goto(PFLAB,{waitUntil:'networkidle'});
 
 // Fresh regression against the replaced PFLAB-14 production file.
-const pflabBodyText=await lab.locator('body').innerText();
-ok('pflab_status_changes_step',/Status changes/i.test(pflabBodyText),pflabBodyText.slice(0,1200));
-ok('pflab_third_firewall',/A flag ≠ a verdict/.test(pflabBodyText),pflabBodyText.slice(0,1400));
-ok('pflab_sources_and_credits',/Sources and credits/i.test(pflabBodyText),pflabBodyText.slice(-1600));
+// The new material lives in the Case Dossier route, which is hidden until activated.
+await lab.locator('nav [data-route="dossier"]').click();
+await lab.waitForFunction(()=>document.querySelector('.route[data-route="dossier"]')?.classList.contains('active'));
+const dossierText=await lab.locator('.route[data-route="dossier"]').innerText();
+ok('pflab_status_changes_step',/Status changes/i.test(dossierText),dossierText.slice(0,1800));
+ok('pflab_third_firewall',/A flag ≠ a verdict/.test(dossierText),dossierText.slice(0,2200));
+ok('pflab_sources_and_credits',/Sources and credits/i.test(dossierText),dossierText.slice(-2200));
+// Return to the handoff route for the functional import checks.
+await lab.locator('nav [data-route="handoff"]').click();
+await lab.waitForFunction(()=>document.querySelector('.route[data-route="handoff"]')?.classList.contains('active'));
 
 await lab.setInputFiles('#handoffFile',handoffPath);
 await lab.waitForFunction(()=>document.querySelector('#handoffStatus')?.textContent?.includes('LAB UNLOCKED'));
