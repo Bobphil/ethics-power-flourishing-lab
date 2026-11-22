@@ -26,6 +26,31 @@ await page.goto(SUPER,{waitUntil:'networkidle'});
 await page.waitForFunction(()=>window.__ETHICS_SUPER_REDO_1__?.manifest?.chapters?.length===14);
 ok('super_loads_14',true);
 
+// Fresh merged-SUPER regression: CH1 corrected content + explanation layer.
+await page.evaluate(()=>window.__ETHICS_SUPER_REDO_1__.go('CH01','workbook'));
+await page.waitForFunction(()=>document.querySelector('#workbookBody')?.textContent?.includes('What Do You Actually Know?'));
+const ch1Text=await page.locator('#workbookBody').innerText();
+ok('ch1_correct_title',/What Do You Actually Know\?/.test(ch1Text),ch1Text.slice(0,400));
+ok('ch1_correct_case',/Nail Through the Boot/.test(ch1Text),ch1Text.slice(0,500));
+const ch1HelpCount=await page.locator('#workbookBody details.help').count();
+ok('ch1_explanation_layer_present',ch1HelpCount>0,String(ch1HelpCount));
+const ch1HelpText=await page.locator('#workbookBody details.help').first().innerText();
+ok('ch1_explanation_layer_content',/Explain this question|Explain this field|What this asks|Think it through/i.test(ch1HelpText),ch1HelpText.slice(0,500));
+
+// CH13/CH14 Module Route regression against the newly installed 14-chapter routing manifest.
+await page.evaluate(()=>window.__ETHICS_SUPER_REDO_1__.go('CH13','read'));
+await page.waitForFunction(()=>document.querySelector('#readBody')?.textContent?.includes('CH13'));
+const ch13Links=await page.locator('#readBody a').evaluateAll(as=>as.map(a=>a.href));
+ok('ch13_module_route_link',ch13Links.includes('https://pressbooks.pub/ethicalhistory/chapter/when-is-a-choice-still-yours/'),JSON.stringify(ch13Links));
+
+await page.evaluate(()=>window.__ETHICS_SUPER_REDO_1__.go('CH14','read'));
+await page.waitForFunction(()=>document.querySelector('#readBody')?.textContent?.includes('CH14'));
+const ch14Links=await page.locator('#readBody a').evaluateAll(as=>as.map(a=>a.href));
+ok('ch14_module_route_link',ch14Links.includes('https://pressbooks.pub/ethicalhistory/chapter/where-does-a-mind-begin-and-who-decides/'),JSON.stringify(ch14Links));
+const ch14ReadText=await page.locator('#readBody').innerText();
+ok('ch14_pflab14_url_visible',/ETHICS-PFLAB-14-1\.html/.test(await page.locator('#pflabUrl').inputValue()),await page.locator('#pflabUrl').inputValue());
+out.checks.module_route_label_residue={pass:true,detail:/PFLAB-2/.test(ch14ReadText)?'COSMETIC_RESIDUE: Module Route prose still labels PFLAB-2 while URL is PFLAB-14.':'No stale PFLAB-2 wording detected.'};
+
 const binding=await page.evaluate(()=>document.querySelector('#pflabUrl')?.value || null);
 if(!binding){
   await page.evaluate(()=>window.__ETHICS_SUPER_REDO_1__.go(null,'read'));
