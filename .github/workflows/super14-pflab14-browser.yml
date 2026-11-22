@@ -1,0 +1,72 @@
+name: SUPER14-PFLAB14 Browser Acceptance
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ETHICS-PFLAB-14-1.html'
+      - 'ETHICS-PFLAB-14-1_LEGACY12_HANDOFF_FIXTURE.json'
+      - 'ETHICS-PFLAB-14-1_CURRENT14_HANDOFF_FIXTURE.json'
+      - 'ETHICS-SUPER-PFLAB-14_BROWSER_ACCEPTANCE.mjs'
+      - '.github/workflows/super14-pflab14-browser.yml'
+  workflow_dispatch:
+
+jobs:
+  browser-acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PFLAB repository
+        uses: actions/checkout@v4
+        with:
+          path: pflab
+
+      - name: Checkout SUPER repository
+        uses: actions/checkout@v4
+        with:
+          repository: Bobphil/ethics-super-final
+          path: super
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright
+        working-directory: pflab
+        run: |
+          npm init -y
+          npm install playwright@1.57.0
+          npx playwright install --with-deps chromium
+
+      - name: Start local committed-site servers
+        run: |
+          python3 -m http.server 8001 --directory super > /tmp/super.log 2>&1 &
+          python3 -m http.server 8002 --directory pflab > /tmp/pflab.log 2>&1 &
+          sleep 2
+          curl --fail http://127.0.0.1:8001/ETHICS-SUPER-14-1.html >/dev/null
+          curl --fail http://127.0.0.1:8002/ETHICS-PFLAB-14-1.html >/dev/null
+
+      - name: Run current + legacy browser handoff acceptance
+        working-directory: pflab
+        run: node ETHICS-SUPER-PFLAB-14_BROWSER_ACCEPTANCE.mjs
+
+      - name: Save acceptance receipt
+        if: always()
+        run: |
+          {
+            echo "workflow=SUPER14-PFLAB14 Browser Acceptance"
+            echo "pflab_sha=${GITHUB_SHA}"
+            echo "super_ref=main"
+            echo "run_id=${GITHUB_RUN_ID}"
+            echo "run_attempt=${GITHUB_RUN_ATTEMPT}"
+          } > pflab/ETHICS-SUPER-PFLAB-14_BROWSER_RECEIPT.txt
+
+      - name: Upload acceptance receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: super14-pflab14-browser-receipt
+          path: |
+            pflab/ETHICS-SUPER-PFLAB-14_BROWSER_RECEIPT.txt
+            pflab/browser-handoff-14.json
+          if-no-files-found: warn
