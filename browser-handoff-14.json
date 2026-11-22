@@ -2,7 +2,7 @@
   "handoff_schema": "ETHICS-PFLAB-HANDOFF-1",
   "source_build": "ETHICS-SUPER-14-1",
   "content_version": "ETHICS-BEYOND-BOUNDARIES-14CH-2026-11-22",
-  "exported_at": "2026-11-22T21:52:16.617Z",
+  "exported_at": "2026-11-22T23:02:59.515Z",
   "ready": true,
   "selection_rule": "Select 3–5 primary Tools; integration does not mean using everything.",
   "lab_grammar": "MAP → TRIAGE → SELECT → SEQUENCE → JUDGE → REPAIR → REOPEN",
@@ -17,18 +17,18 @@
       "carry_forward": "browser carry CH01",
       "output_card_ref": "OC-CH01",
       "status": "READY",
-      "updated_at": "2026-11-22T21:52:15.907Z"
+      "updated_at": "2026-11-22T23:02:58.859Z"
     },
     "TOOL-CH02": {
       "chapter_id": "CH02",
       "tool_id": "TOOL-CH02",
       "tool_name": "Examination / Reason-Giving Audit",
       "made_visible": "browser made visible CH02",
-      "claim_ceiling": "Failed justification ≠ opposite conclusion proven. Authority approval ≠ sufficient explanation of justice.",
+      "claim_ceiling": "Refuting one argument ≠ proving its opposite. Example ≠ explanation.",
       "carry_forward": "browser carry CH02",
       "output_card_ref": "OC-CH02",
       "status": "READY",
-      "updated_at": "2026-11-22T21:52:15.907Z"
+      "updated_at": "2026-11-22T23:02:58.859Z"
     },
     "TOOL-CH03": {
       "chapter_id": "CH03",
@@ -39,29 +39,29 @@
       "carry_forward": "browser carry CH03",
       "output_card_ref": "OC-CH03",
       "status": "READY",
-      "updated_at": "2026-11-22T21:52:15.907Z"
+      "updated_at": "2026-11-22T23:02:58.859Z"
     },
     "TOOL-CH04": {
       "chapter_id": "CH04",
       "tool_id": "TOOL-CH04",
       "tool_name": "Control / Desire / Moral-Range Audit",
       "made_visible": "browser made visible CH04",
-      "claim_ceiling": "Not under control ≠ not important. Remaining agency ≠ unlimited obligation.",
+      "claim_ceiling": "Not under my control ≠ not important. Remaining agency ≠ unlimited obligation.",
       "carry_forward": "browser carry CH04",
       "output_card_ref": "OC-CH04",
       "status": "READY",
-      "updated_at": "2026-11-22T21:52:15.907Z"
+      "updated_at": "2026-11-22T23:02:58.859Z"
     },
     "TOOL-CH05": {
       "chapter_id": "CH05",
       "tool_id": "TOOL-CH05",
       "tool_name": "Moral Authority / Common-Good Audit",
       "made_visible": "browser made visible CH05",
-      "claim_ceiling": "Enactment ≠ sufficient bindingness. Good purpose ≠ one uniquely required policy.",
+      "claim_ceiling": "Enforceability ≠ legitimacy. General moral purpose ≠ one uniquely required policy.",
       "carry_forward": "browser carry CH05",
       "output_card_ref": "OC-CH05",
       "status": "READY",
-      "updated_at": "2026-11-22T21:52:15.907Z"
+      "updated_at": "2026-11-22T23:02:58.859Z"
     },
     "TOOL-CH06": {
       "chapter_id": "CH06",
@@ -72,7 +72,7 @@
       "carry_forward": "browser carry CH06",
       "output_card_ref": "OC-CH06",
       "status": "READY",
-      "updated_at": "2026-11-22T21:52:15.907Z"
+      "updated_at": "2026-11-22T23:02:58.859Z"
     },
     "TOOL-CH07": {
       "chapter_id": "CH07",
@@ -83,7 +83,7 @@
       "carry_forward": "browser carry CH07",
       "output_card_ref": "OC-CH07",
       "status": "READY",
-      "updated_at": "2026-11-22T21:52:15.907Z"
+      "updated_at": "2026-11-22T23:02:58.859Z"
     },
     "TOOL-CH08": {
       "chapter_id": "CH08",
@@ -94,29 +94,29 @@
       "carry_forward": "browser carry CH08",
       "output_card_ref": "OC-CH08",
       "status": "READY",
-      "updated_at": "2026-11-22T21:52:15.907Z"
+      "updated_at": "2026-11-22T23:02:58.859Z"
     },
     "TOOL-CH09": {
       "chapter_id": "CH09",
       "tool_id": "TOOL-CH09",
       "tool_name": "Consequence / Welfare / Harm Audit",
       "made_visible": "browser made visible CH09",
-      "claim_ceiling": "Aggregation ≠ fair distribution. Predicted benefit ≠ complete justification. Harm ≠ automatic coercive authority.",
+      "claim_ceiling": "Aggregation ≠ fair distribution. Predicted consequence ≠ guaranteed consequence. Harm ≠ automatic coercive authority.",
       "carry_forward": "browser carry CH09",
       "output_card_ref": "OC-CH09",
       "status": "READY",
-      "updated_at": "2026-11-22T21:52:15.907Z"
+      "updated_at": "2026-11-22T23:02:58.859Z"
     },
     "TOOL-CH10": {
       "chapter_id": "CH10",
       "tool_id": "TOOL-CH10",
       "tool_name": "Background Power / Genealogy Audit",
       "made_visible": "browser made visible CH10",
-      "claim_ceiling": "Formal choice ≠ equal practical freedom. Structure ≠ no agency. Genealogy ≠ refutation.",
+      "claim_ceiling": "Formal choice ≠ equal practical freedom. Material dependence ≠ no agency. Genealogy ≠ automatic debunking.",
       "carry_forward": "browser carry CH10",
       "output_card_ref": "OC-CH10",
       "status": "READY",
-      "updated_at": "2026-11-22T21:52:15.907Z"
+      "updated_at": "2026-11-22T23:02:58.859Z"
     },
     "TOOL-CH11": {
       "chapter_id": "CH11",
@@ -127,7 +127,7 @@
       "carry_forward": "browser carry CH11",
       "output_card_ref": "OC-CH11",
       "status": "READY",
-      "updated_at": "2026-11-22T21:52:15.907Z"
+      "updated_at": "2026-11-22T23:02:58.859Z"
     },
     "TOOL-CH12": {
       "chapter_id": "CH12",
@@ -138,7 +138,7 @@
       "carry_forward": "browser carry CH12",
       "output_card_ref": "OC-CH12",
       "status": "READY",
-      "updated_at": "2026-11-22T21:52:15.907Z"
+      "updated_at": "2026-11-22T23:02:58.859Z"
     },
     "TOOL-CH13": {
       "chapter_id": "CH13",
@@ -149,7 +149,7 @@
       "carry_forward": "browser carry CH13",
       "output_card_ref": "OC-CH13",
       "status": "READY",
-      "updated_at": "2026-11-22T21:52:15.907Z"
+      "updated_at": "2026-11-22T23:02:58.859Z"
     },
     "TOOL-CH14": {
       "chapter_id": "CH14",
@@ -160,7 +160,7 @@
       "carry_forward": "browser carry CH14",
       "output_card_ref": "OC-CH14",
       "status": "READY",
-      "updated_at": "2026-11-22T21:52:15.907Z"
+      "updated_at": "2026-11-22T23:02:58.859Z"
     }
   },
   "output_cards": {
@@ -184,7 +184,7 @@
         "reason": "browser acceptance CH02 reason",
         "license": "browser acceptance CH02 license"
       },
-      "claim_ceiling": "Failed justification ≠ opposite conclusion proven. Authority approval ≠ sufficient explanation of justice.",
+      "claim_ceiling": "Refuting one argument ≠ proving its opposite. Example ≠ explanation.",
       "response": "Accept provisionally",
       "carry": "browser carry CH02"
     },
@@ -208,7 +208,7 @@
         "remaining": "browser acceptance CH04 remaining",
         "boundary": "browser acceptance CH04 boundary"
       },
-      "claim_ceiling": "Not under control ≠ not important. Remaining agency ≠ unlimited obligation.",
+      "claim_ceiling": "Not under my control ≠ not important. Remaining agency ≠ unlimited obligation.",
       "response": "Use remaining agency",
       "carry": "browser carry CH04"
     },
@@ -221,7 +221,7 @@
         "exception": "browser acceptance CH05 exception",
         "scope": "browser acceptance CH05 scope"
       },
-      "claim_ceiling": "Enactment ≠ sufficient bindingness. Good purpose ≠ one uniquely required policy.",
+      "claim_ceiling": "Enforceability ≠ legitimacy. General moral purpose ≠ one uniquely required policy.",
       "response": "Enforce",
       "carry": "browser carry CH05"
     },
@@ -278,7 +278,7 @@
         "liberty": "browser acceptance CH09 liberty",
         "alternative": "browser acceptance CH09 alternative"
       },
-      "claim_ceiling": "Aggregation ≠ fair distribution. Predicted benefit ≠ complete justification. Harm ≠ automatic coercive authority.",
+      "claim_ceiling": "Aggregation ≠ fair distribution. Predicted consequence ≠ guaranteed consequence. Harm ≠ automatic coercive authority.",
       "response": "Adopt",
       "carry": "browser carry CH09"
     },
@@ -291,7 +291,7 @@
         "control": "browser acceptance CH10 control",
         "value": "browser acceptance CH10 value"
       },
-      "claim_ceiling": "Formal choice ≠ equal practical freedom. Structure ≠ no agency. Genealogy ≠ refutation.",
+      "claim_ceiling": "Formal choice ≠ equal practical freedom. Material dependence ≠ no agency. Genealogy ≠ automatic debunking.",
       "response": "Change material conditions",
       "carry": "browser carry CH10"
     },
@@ -328,28 +328,28 @@
       "judgment": "browser bounded judgment CH13",
       "pressure": "browser pressure CH13",
       "specific": {
-        "capacity": "browser acceptance CH13 capacity",
+        "capacities": "browser acceptance CH13 capacities",
         "change": "browser acceptance CH13 change",
-        "status": "browser acceptance CH13 status",
+        "category": "browser acceptance CH13 category",
         "forward": "browser acceptance CH13 forward",
-        "authorization": "browser acceptance CH13 authorization"
+        "authority": "browser acceptance CH13 authority"
       },
       "claim_ceiling": "Caused ≠ coerced. Explanation ≠ automatic excuse. Felt insight ≠ verified truth.",
-      "response": "Reduce / redirect blame",
+      "response": "Hold fully responsible",
       "carry": "browser carry CH13"
     },
     "CH14": {
       "judgment": "browser bounded judgment CH14",
       "pressure": "browser pressure CH14",
       "specific": {
-        "standing": "browser acceptance CH14 standing",
-        "tool_role": "browser acceptance CH14 tool_role",
-        "unheard": "browser acceptance CH14 unheard",
-        "shared_task": "browser acceptance CH14 shared_task",
+        "counts": "browser acceptance CH14 counts",
+        "tool": "browser acceptance CH14 tool",
+        "silence": "browser acceptance CH14 silence",
+        "task": "browser acceptance CH14 task",
         "return": "browser acceptance CH14 return"
       },
       "claim_ceiling": "Competence ≠ moral standing. AI-assisted ≠ AI-decided. Suspecting Dark Coherence ≠ establishing it.",
-      "response": "Proceed with safeguards",
+      "response": "Proceed under shared conditions",
       "carry": "browser carry CH14"
     }
   }

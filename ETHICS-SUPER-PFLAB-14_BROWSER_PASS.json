@@ -4,13 +4,45 @@
       "pass": true,
       "detail": ""
     },
+    "ch1_correct_title": {
+      "pass": true,
+      "detail": "CH01 · WAVE 1 · REAL CASE (BMJ, 1995)\nWhat Do You Actually Know?\n\nEthical Attention, First Maps, and Ethics Before Philosophy\n\nCase: Nail Through the Boot\nTool: Ethical Attention / First Map Audit\nOPEN\nTARGETED READING · ROUTING SOURCE ETHICS-PB-URL-BIND-1\nUse the chapter at the points this workbook calls for it\n\nPressbooks does not provide stable section-specific URLs here. Open the chapter once,"
+    },
+    "ch1_correct_case": {
+      "pass": true,
+      "detail": "CH01 · WAVE 1 · REAL CASE (BMJ, 1995)\nWhat Do You Actually Know?\n\nEthical Attention, First Maps, and Ethics Before Philosophy\n\nCase: Nail Through the Boot\nTool: Ethical Attention / First Map Audit\nOPEN\nTARGETED READING · ROUTING SOURCE ETHICS-PB-URL-BIND-1\nUse the chapter at the points this workbook calls for it\n\nPressbooks does not provide stable section-specific URLs here. Open the chapter once, then use the section names below as the exact reading targets.\n\nOpen Pressbooks chapter\nRead sectio"
+    },
+    "ch1_explanation_layer_present": {
+      "pass": true,
+      "detail": "15"
+    },
+    "ch1_explanation_layer_content": {
+      "pass": true,
+      "detail": "Key terms in this workbook || See a completed workbook: Maya and Diego (The Closing Shift) || Explain this question || Explain this question || Explain this question"
+    },
+    "ch13_module_route_link": {
+      "pass": true,
+      "detail": "[\"https://pressbooks.pub/ethicalhistory/chapter/when-is-a-choice-still-yours/\"]"
+    },
+    "ch14_module_route_link": {
+      "pass": true,
+      "detail": "[\"https://pressbooks.pub/ethicalhistory/chapter/where-does-a-mind-begin-and-who-decides/\"]"
+    },
+    "ch14_pflab14_url_visible": {
+      "pass": true,
+      "detail": "https://bobphil.github.io/ethics-power-flourishing-lab/ETHICS-PFLAB-14-1.html"
+    },
+    "module_route_label_residue": {
+      "pass": true,
+      "detail": "COSMETIC_RESIDUE: Module Route prose still labels PFLAB-2 while URL is PFLAB-14."
+    },
     "super_bound_to_pflab14": {
       "pass": true,
       "detail": "https://bobphil.github.io/ethics-power-flourishing-lab/ETHICS-PFLAB-14-1.html"
     },
     "super_14of14_ready": {
       "pass": true,
-      "detail": "PFLAB-14-1 handoff\nREADY FOR LAB\nAll fourteen Output Cards are READY. Tool selection and sequencing can now become the student’s responsibility.\n\nTool Record: 14/14 entries accumulated.\n\nLab grammar: MAP → TRIAGE → SELECT → SEQUENCE → JUDGE → REPAIR → REOPEN\n\nFirewalls: Integration ≠ using everythin"
+      "detail": "PFLAB-2 handoff\nREADY FOR LAB\nAll 14 Output Cards are READY. Tool selection and sequencing can now become the student’s responsibility.\n\nTool Record: 14/14 entries accumulated.\n\nLab grammar: MAP → TRIAGE → SELECT → SEQUENCE → JUDGE → REPAIR → REOPEN\n\nFirewalls: Integration ≠ using everything. Genera"
     },
     "super_lab_launch_enabled": {
       "pass": true,
