@@ -1,2 +1,3 @@
 Trigger PR browser acceptance for SUPER-14 → PFLAB-14 current and legacy handoffs.
 Retry after switching to system browser.
+Retry after receipt syntax fix.
