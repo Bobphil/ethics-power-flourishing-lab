@@ -1,0 +1,1 @@
+Trigger fresh browser regression against the newly installed merged SUPER-14 content and 14-chapter routing manifest.
