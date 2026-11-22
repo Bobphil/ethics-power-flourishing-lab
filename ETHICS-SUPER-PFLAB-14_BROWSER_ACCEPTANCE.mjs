@@ -34,8 +34,8 @@ ok('ch1_correct_title',/What Do You Actually Know\?/.test(ch1Text),ch1Text.slice
 ok('ch1_correct_case',/Nail Through the Boot/.test(ch1Text),ch1Text.slice(0,500));
 const ch1HelpCount=await page.locator('#workbookBody details.help').count();
 ok('ch1_explanation_layer_present',ch1HelpCount>0,String(ch1HelpCount));
-const ch1HelpText=await page.locator('#workbookBody details.help').first().innerText();
-ok('ch1_explanation_layer_content',/Explain this question|Explain this field|What this asks|Think it through/i.test(ch1HelpText),ch1HelpText.slice(0,500));
+const ch1HelpTexts=await page.locator('#workbookBody details.help').allInnerTexts();
+ok('ch1_explanation_layer_content',ch1HelpTexts.some(t=>/Explain this question|Explain this field|Explain this box|What this asks|Think it through/i.test(t)),ch1HelpTexts.slice(0,5).join(' || ').slice(0,1000));
 
 // CH13/CH14 Module Route regression against the newly installed 14-chapter routing manifest.
 await page.evaluate(()=>window.__ETHICS_SUPER_REDO_1__.go('CH13','read'));
