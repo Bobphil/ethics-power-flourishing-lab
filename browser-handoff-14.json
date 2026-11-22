@@ -2,7 +2,7 @@
   "handoff_schema": "ETHICS-PFLAB-HANDOFF-1",
   "source_build": "ETHICS-SUPER-14-1",
   "content_version": "ETHICS-BEYOND-BOUNDARIES-14CH-2026-11-22",
-  "exported_at": "2026-11-22T23:02:59.515Z",
+  "exported_at": "2026-11-22T23:31:01.547Z",
   "ready": true,
   "selection_rule": "Select 3–5 primary Tools; integration does not mean using everything.",
   "lab_grammar": "MAP → TRIAGE → SELECT → SEQUENCE → JUDGE → REPAIR → REOPEN",
@@ -17,7 +17,7 @@
       "carry_forward": "browser carry CH01",
       "output_card_ref": "OC-CH01",
       "status": "READY",
-      "updated_at": "2026-11-22T23:02:58.859Z"
+      "updated_at": "2026-11-22T23:31:00.919Z"
     },
     "TOOL-CH02": {
       "chapter_id": "CH02",
@@ -28,7 +28,7 @@
       "carry_forward": "browser carry CH02",
       "output_card_ref": "OC-CH02",
       "status": "READY",
-      "updated_at": "2026-11-22T23:02:58.859Z"
+      "updated_at": "2026-11-22T23:31:00.919Z"
     },
     "TOOL-CH03": {
       "chapter_id": "CH03",
@@ -39,7 +39,7 @@
       "carry_forward": "browser carry CH03",
       "output_card_ref": "OC-CH03",
       "status": "READY",
-      "updated_at": "2026-11-22T23:02:58.859Z"
+      "updated_at": "2026-11-22T23:31:00.919Z"
     },
     "TOOL-CH04": {
       "chapter_id": "CH04",
@@ -50,7 +50,7 @@
       "carry_forward": "browser carry CH04",
       "output_card_ref": "OC-CH04",
       "status": "READY",
-      "updated_at": "2026-11-22T23:02:58.859Z"
+      "updated_at": "2026-11-22T23:31:00.919Z"
     },
     "TOOL-CH05": {
       "chapter_id": "CH05",
@@ -61,7 +61,7 @@
       "carry_forward": "browser carry CH05",
       "output_card_ref": "OC-CH05",
       "status": "READY",
-      "updated_at": "2026-11-22T23:02:58.859Z"
+      "updated_at": "2026-11-22T23:31:00.919Z"
     },
     "TOOL-CH06": {
       "chapter_id": "CH06",
@@ -72,7 +72,7 @@
       "carry_forward": "browser carry CH06",
       "output_card_ref": "OC-CH06",
       "status": "READY",
-      "updated_at": "2026-11-22T23:02:58.859Z"
+      "updated_at": "2026-11-22T23:31:00.919Z"
     },
     "TOOL-CH07": {
       "chapter_id": "CH07",
@@ -83,7 +83,7 @@
       "carry_forward": "browser carry CH07",
       "output_card_ref": "OC-CH07",
       "status": "READY",
-      "updated_at": "2026-11-22T23:02:58.859Z"
+      "updated_at": "2026-11-22T23:31:00.919Z"
     },
     "TOOL-CH08": {
       "chapter_id": "CH08",
@@ -94,7 +94,7 @@
       "carry_forward": "browser carry CH08",
       "output_card_ref": "OC-CH08",
       "status": "READY",
-      "updated_at": "2026-11-22T23:02:58.859Z"
+      "updated_at": "2026-11-22T23:31:00.919Z"
     },
     "TOOL-CH09": {
       "chapter_id": "CH09",
@@ -105,7 +105,7 @@
       "carry_forward": "browser carry CH09",
       "output_card_ref": "OC-CH09",
       "status": "READY",
-      "updated_at": "2026-11-22T23:02:58.859Z"
+      "updated_at": "2026-11-22T23:31:00.919Z"
     },
     "TOOL-CH10": {
       "chapter_id": "CH10",
@@ -116,7 +116,7 @@
       "carry_forward": "browser carry CH10",
       "output_card_ref": "OC-CH10",
       "status": "READY",
-      "updated_at": "2026-11-22T23:02:58.859Z"
+      "updated_at": "2026-11-22T23:31:00.919Z"
     },
     "TOOL-CH11": {
       "chapter_id": "CH11",
@@ -127,7 +127,7 @@
       "carry_forward": "browser carry CH11",
       "output_card_ref": "OC-CH11",
       "status": "READY",
-      "updated_at": "2026-11-22T23:02:58.859Z"
+      "updated_at": "2026-11-22T23:31:00.919Z"
     },
     "TOOL-CH12": {
       "chapter_id": "CH12",
@@ -138,7 +138,7 @@
       "carry_forward": "browser carry CH12",
       "output_card_ref": "OC-CH12",
       "status": "READY",
-      "updated_at": "2026-11-22T23:02:58.859Z"
+      "updated_at": "2026-11-22T23:31:00.919Z"
     },
     "TOOL-CH13": {
       "chapter_id": "CH13",
@@ -149,7 +149,7 @@
       "carry_forward": "browser carry CH13",
       "output_card_ref": "OC-CH13",
       "status": "READY",
-      "updated_at": "2026-11-22T23:02:58.859Z"
+      "updated_at": "2026-11-22T23:31:00.919Z"
     },
     "TOOL-CH14": {
       "chapter_id": "CH14",
@@ -160,7 +160,7 @@
       "carry_forward": "browser carry CH14",
       "output_card_ref": "OC-CH14",
       "status": "READY",
-      "updated_at": "2026-11-22T23:02:58.859Z"
+      "updated_at": "2026-11-22T23:31:00.919Z"
     }
   },
   "output_cards": {

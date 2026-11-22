@@ -34,7 +34,7 @@
     },
     "module_route_label_residue": {
       "pass": true,
-      "detail": "COSMETIC_RESIDUE: Module Route prose still labels PFLAB-2 while URL is PFLAB-14."
+      "detail": "No stale PFLAB-2 wording detected."
     },
     "super_bound_to_pflab14": {
       "pass": true,
@@ -42,7 +42,7 @@
     },
     "super_14of14_ready": {
       "pass": true,
-      "detail": "PFLAB-2 handoff\nREADY FOR LAB\nAll 14 Output Cards are READY. Tool selection and sequencing can now become the student’s responsibility.\n\nTool Record: 14/14 entries accumulated.\n\nLab grammar: MAP → TRIAGE → SELECT → SEQUENCE → JUDGE → REPAIR → REOPEN\n\nFirewalls: Integration ≠ using everything. Genera"
+      "detail": "PFLAB-14-1 handoff\nREADY FOR LAB\nAll 14 Output Cards are READY. Tool selection and sequencing can now become the student’s responsibility.\n\nTool Record: 14/14 entries accumulated.\n\nLab grammar: MAP → TRIAGE → SELECT → SEQUENCE → JUDGE → REPAIR → REOPEN\n\nFirewalls: Integration ≠ using everything. Gen"
     },
     "super_lab_launch_enabled": {
       "pass": true,
