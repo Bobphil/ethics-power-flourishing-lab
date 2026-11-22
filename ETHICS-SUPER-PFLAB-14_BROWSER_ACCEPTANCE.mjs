@@ -115,6 +115,13 @@ ok('handoff_ch14',!!handoff.tool_record?.['TOOL-CH14']);
 
 const lab=await ctx.newPage();
 await lab.goto(PFLAB,{waitUntil:'networkidle'});
+
+// Fresh regression against the replaced PFLAB-14 production file.
+const pflabBodyText=await lab.locator('body').innerText();
+ok('pflab_status_changes_step',/Status changes/i.test(pflabBodyText),pflabBodyText.slice(0,1200));
+ok('pflab_third_firewall',/A flag ≠ a verdict/.test(pflabBodyText),pflabBodyText.slice(0,1400));
+ok('pflab_sources_and_credits',/Sources and credits/i.test(pflabBodyText),pflabBodyText.slice(-1600));
+
 await lab.setInputFiles('#handoffFile',handoffPath);
 await lab.waitForFunction(()=>document.querySelector('#handoffStatus')?.textContent?.includes('LAB UNLOCKED'));
 const report14=await lab.locator('#handoffReport').innerText();
