@@ -68,6 +68,8 @@ await page.evaluate(()=>{
   localStorage.setItem('ETHICS_SUPER_14_1_14CH_V1',JSON.stringify(state));
 });
 await page.reload({waitUntil:'networkidle'});
+await page.waitForFunction(()=>window.__ETHICS_SUPER_REDO_1__);
+await page.evaluate(()=>window.__ETHICS_SUPER_REDO_1__.go('CH14','pflab'));
 await page.waitForFunction(()=>document.querySelector('#launchPflab'));
 const labText=await page.locator('#pflabBody').innerText();
 ok('super_14of14_ready',/14\/14|All fourteen Output Cards are READY/.test(labText),labText.slice(0,300));
