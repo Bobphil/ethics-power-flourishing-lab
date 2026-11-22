@@ -9,6 +9,8 @@ on:
       - 'ETHICS-PFLAB-14-1_CURRENT14_HANDOFF_FIXTURE.json'
       - 'ETHICS-SUPER-PFLAB-14_BROWSER_ACCEPTANCE.mjs'
       - '.github/workflows/super14-pflab14-browser.yml'
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
