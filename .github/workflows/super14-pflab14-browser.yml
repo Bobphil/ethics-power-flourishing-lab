@@ -56,7 +56,7 @@ jobs:
         run: node ETHICS-SUPER-PFLAB-14_BROWSER_ACCEPTANCE.mjs
 
       - name: Commit browser PASS receipt
-        if: success()
+        if: success() && github.event_name == 'push'
         working-directory: pflab
         run: |
           git config user.name "github-actions[bot]"
