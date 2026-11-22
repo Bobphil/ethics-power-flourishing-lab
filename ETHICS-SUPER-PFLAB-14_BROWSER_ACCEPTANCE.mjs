@@ -1,5 +1,6 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import path from 'node:path';
 
 const SUPER='http://127.0.0.1:8001/ETHICS-SUPER-14-1.html';
@@ -8,7 +9,16 @@ const EXPECTED_PFLAB='https://bobphil.github.io/ethics-power-flourishing-lab/ETH
 const out={checks:{}};
 const ok=(name,value,detail='')=>{out.checks[name]={pass:!!value,detail}; if(!value) throw new Error(name+': '+detail);};
 
-const browser=await chromium.launch({headless:true});
+const browserCandidates=[
+  process.env.CHROME_PATH,
+  '/usr/bin/google-chrome',
+  '/usr/bin/google-chrome-stable',
+  '/usr/bin/chromium',
+  '/usr/bin/chromium-browser'
+].filter(Boolean);
+const executablePath=browserCandidates.find(p=>existsSync(p));
+if(!executablePath) throw new Error('No system Chrome/Chromium found on runner');
+const browser=await chromium.launch({headless:true,executablePath});
 const ctx=await browser.newContext({acceptDownloads:true});
 const page=await ctx.newPage();
 
